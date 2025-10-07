@@ -1,104 +1,122 @@
-# Projet Rubik's Cube
+# \# 🧩 Projet Rubik's Cube
 
+# 
 
+# \## 🎯 Présentation du projet
 
+# 
 
+# Voici notre projet de \*\*2ème année\*\* :  
 
-Présentation du projet:
+# Un \*\*robot solveur de Rubik’s Cube automatique\*\*.
 
+# 
 
+# L’objectif est de \*\*concevoir un robot capable de résoudre un Rubik’s Cube rapidement\*\*, tout en conservant une \*\*structure compacte et portable\*\*.
 
-Voici notre projet de 2ème année : Un Robot solveur de rubik's cube automatique.
+# 
 
-L'objectif est de construire un robot capable de résoudre le rubik's cube suffisamment rapidement tout en ayant une conception réduite et portable. Pour cela nous disposons déjà du montage de nos prédécesseurs ainsi que les composants qui vont avec (driver, stepper motor...). Or il est possible qu'on commande d'autres composants au vu du volume important de ces derniers.
+# Nous disposons déjà du \*\*montage\*\* réalisé par nos prédécesseurs ainsi que des \*\*composants associés\*\* (drivers, moteurs pas à pas, etc.).  
 
+# Cependant, \*\*de nouveaux composants\*\* pourront être commandés en raison du \*\*volume important\*\* de certains éléments.
 
+# 
 
+# ---
 
+# 
 
-Cahier des charges:
+# \## 📋 Cahier des charges
 
+# 
 
+# | Critère | Spécification |
 
-Vitesse de résolution	20s
+# |----------|----------------|
 
-Budget	80 €
+# | \*\*Vitesse de résolution\*\* | ≤ 20 s |
 
-Taille	Compacte
+# | \*\*Budget\*\* | 80 € |
 
+# | \*\*Taille\*\* | Compacte |
 
+# 
 
+# ---
 
+# 
 
+# \## 💡 Solutions préconisées
 
+# 
 
-Ce qu'on préconise:
+# \- 🧠 \*\*Calcul et commande :\*\*  
 
+# &nbsp; L’\*\*algorithme de résolution\*\* et la \*\*commande des moteurs\*\* seront gérés par un \*\*FPGA-SoC\*\*.
 
+# 
 
-La partie résolution d'algorithme et la commande des moteurs sera assuré par un FPGA-Soc.
+# \- ⚙️ \*\*Mouvement :\*\*  
 
-Les rotations du cube vont être gérer par des moteurs pas à pas et leurs drivers respectifs.
+# &nbsp; Les \*\*rotations du cube\*\* seront effectuées par des \*\*moteurs pas à pas\*\* et leurs \*\*drivers respectifs\*\*.
 
-Le montage sera alimenté par des batteries.
+# 
 
-On prévoit une structure en forme d'anneau qui peut se déployer autour du rubik's cube.
+# \- 🔋 \*\*Alimentation :\*\*  
 
+# &nbsp; Le montage sera \*\*alimenté par des batteries\*\*.
 
+# 
 
+# \- 🧱 \*\*Structure :\*\*  
 
+# &nbsp; Nous prévoyons une \*\*structure en forme d’anneau\*\*, capable de \*\*se déployer autour du Rubik’s Cube\*\*.
 
+# 
 
+# ---
 
-Progression :
+# 
 
+# \## 📆 Progression du projet
 
+# 
 
-07/10/2025
+# \*\*Date : 07/10/2025\*\*
 
-L'algorithme est trouvé
+# 
 
-Le code VHDL est en cour d'écriture
+# \- ✅ L’\*\*algorithme de résolution\*\* est trouvé  
 
-Une liste de composant a été dressée.
+# \- 🧩 Le \*\*code VHDL\*\* est en cours d’écriture  
 
+# \- 🧾 Une \*\*liste de composants\*\* a été dressée
 
+# 
 
+# ---
 
+# 
 
+# \## 🚀 Objectif final
 
+# 
 
+# Concevoir un \*\*robot solveur de Rubik’s Cube\*\* :
 
+# \- Rapide (\*\*< 20 secondes\*\*)  
 
+# \- Compact et autonome  
 
+# \- Basé sur un \*\*FPGA-SoC\*\* pour la commande intelligente  
 
+# \- Capable de \*\*résoudre un cube standard 3x3 automatiquement\*\*
 
+# 
 
+# ---
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 
 
 
 
