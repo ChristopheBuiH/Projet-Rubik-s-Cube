@@ -17,7 +17,7 @@ Cependant, **de nouveaux composants** pourront être commandés en raison du **v
 | Critère | Spécification |
 |----------|----------------|
 | **Vitesse de résolution** | ≤ 20 s |
-| **Budget** | 80 € |
+| **Budget** | 160 € |
 | **Taille** | Compacte |
 
 ---
