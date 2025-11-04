@@ -89,7 +89,7 @@ $$
 Le rapport cyclique est réglé grâce au paramètre CCR de la PWM : 
 
 $$
-rapport_{cyclique} = \frac{CCR}{(Arr+1)}
+rapport\_cyclique = \frac{CCR}{(Arr+1)}
 $$
 
 On souhaite avoir un rapport cyclique de 0,5. On choisit donc de prendre :
