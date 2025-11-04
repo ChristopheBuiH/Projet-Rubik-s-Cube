@@ -47,8 +47,53 @@ Cela nous a amené à choisir le modèle suivant : 17HE08-1004S ,
 | Vitesse | 200 tr/min |
 
 
+## b - Test des moteurs
+
+On a testé les moteurs et drivers actuels pour s'assurer de leur bon fonctionnement.
+
+Le driver utilisé comporte dix broches : 
+
+| Broche | Fonction | Valeur |
+|---------|---------|------|
+| GND (x2) | Masse | - |
+| Vmot | Alimentation du moteur | 12V (entre 8V et 35V) |
+| STEP | signal de commande du moteur | Signal PWM |
+| DIR | Sens de rotation |  +/- 5V |
+| VDD | Alimentation du driver | 3,3V (entre 3V et 5,5V) |   
+| 2A, 1A, 1B, 2B  | entrées du moteur | - |
+
+On souhaitait tout d'abord faire tourner le moteur dans une seule direction. On devait donc générer un signal PWM pour la broche STEP du driver. Pour cela, on a configuré une broche de la carte pour qu'elle génère le signal PWM à l'aide d'un Timer. La carte STM32 a également servi de source d'alimentation pour les broches VDD, Dir et GND.
+
+Le signal PWM généré par la carte est caractérisée par sa fréquence et son rapport cyclique.
 
 
+La fréquence de la PWM est reliée à la fréquence de l'horloge :
+$$
+f_{PWM} = \frac{f_{clock}}{(PSC + 1)(ARR + 1)}
+$$
+
+Avec : 
+    * **f_clock = 84MHz** : la fréquence de l'horloge de la carte STM32
+    * **PSC** : le prescaler
+    * **ARR**
+
+On a choisi **PSC = 84** et **ARR = 1999**, ce qui correspond donne une fréquence de :
+$$
+f_{PWM} = 500Hz.
+$$
+
+Le rapport cyclique est réglé grâce au paramètre CCR de la PWM : 
+$$
+rapport_cyclique = \frac{CCR}{(Arr+1)}
+$$
+On souhaite avoir un rapport cyclique de 0,5. On choisit donc de prendre $ CCR = \frac{ARR+1}{2} $.
+
+
+En faisant cela, on remarque que le moteur tourne bien. On diminue progressivement ARR pour augmenter la fréquence. On est arrivé jusqu'à **ARR = 1249**. Toutefois, le moteur n'arrivait pas tout le temps à tourner à cette fréquence. 
+On est donc descendu à la valeur finale ARR = 1399, ce qui fonctionne. 
+La fréquence de la PWM est donc de ** $ f_{PWM} ** = 714 Hz $, ce qui signifie qu'une face du rubik's cube peut faire un tour complet en **0,280 s**, ce qui est suffisant pour satisfaire le critère de rapidité du cahier des charges.
+
+Nous avons testé de cette manière l'ensemble des moteurs et drivers. Cela nous a permis de voir qu'ils sont tous fonctionnels.
 
 
 
