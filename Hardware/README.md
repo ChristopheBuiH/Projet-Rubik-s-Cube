@@ -68,6 +68,7 @@ Le signal PWM généré par la carte est caractérisée par sa **fréquence** et
 
 
 La fréquence de la PWM est reliée à la fréquence de l'horloge :
+
 $$
 f_{PWM} = \frac{f_{clock}}{(PSC + 1)(ARR + 1)}
 $$
@@ -89,7 +90,7 @@ $$
 Le rapport cyclique est réglé grâce au paramètre CCR de la PWM : 
 
 $$
-rapport\_cyclique = \frac{CCR}{(Arr+1)}
+rapport~cyclique = \frac{CCR}{(Arr+1)}
 $$
 
 On souhaite avoir un rapport cyclique de 0,5. On choisit donc de prendre :
