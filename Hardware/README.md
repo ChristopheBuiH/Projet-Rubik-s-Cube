@@ -58,7 +58,7 @@ Le driver utilisé comporte dix broches :
 | **GND** (x2) | Masse | - |
 | **Vmot** | Alimentation du moteur | 12V (entre 8V et 35V) |
 | **STEP** | signal de commande du moteur | Signal PWM |
-| **DIR** | Sens de rotation |  +/- 5V |
+| **DIR** | Sens de rotation | 5V ou 0V |
 | **VDD** | Alimentation du driver | 3,3V (entre 3V et 5,5V) |   
 | **2A, 1A, 1B, 2B**  | entrées du moteur | - |
 
