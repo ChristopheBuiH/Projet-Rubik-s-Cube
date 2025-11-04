@@ -11,6 +11,7 @@ Voici un excel qui dresse une liste des composants envisagés:
 
 ## a - Moteurs
 
+
 Notre composant actuel est le modèle ST4118L1804-A :
 
 | Caractéristique | Valeur |
@@ -39,11 +40,16 @@ Cela nous a amené à choisir le modèle suivant : 17HE08-1004S ,
 
 | Caractéristique | Valeur |
 |---------|---------------|
-| Couple  | 0,5 Nm |
-| Taille  | 4,23 x 4,23 x 5 cm |
+| Couple  | 0,17 Nm |
+| Taille  | 4,23 x 4,23 x 2,3 cm |
 | Phase | 2 |
-| Tension nominale max | 24 VDC |
-| Vitesse | 2000 tr/min |
+| Tension nominale max | 12 VDC |
+| Vitesse | 200 tr/min |
+
+
+
+
+
 
 
 
