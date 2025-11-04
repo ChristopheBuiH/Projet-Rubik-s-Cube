@@ -87,10 +87,13 @@ f_{PWM} = 500 \text{Hz}.
 $$
 
 Le rapport cyclique est réglé grâce au paramètre CCR de la PWM : 
+
 $$
 rapport_cyclique = \frac{CCR}{(Arr+1)}
 $$
+
 On souhaite avoir un rapport cyclique de 0,5. On choisit donc de prendre :
+
 $$ 
 CCR = \frac{ARR+1}{2} 
 $$
@@ -98,7 +101,7 @@ $$
 
 En faisant cela, on remarque que le moteur tourne bien. On diminue progressivement ARR pour augmenter la fréquence. On est arrivé jusqu'à **ARR = 1249**. Toutefois, le moteur n'arrivait pas tout le temps à tourner à cette fréquence. 
 On est donc descendu à la valeur finale ARR = 1399, ce qui fonctionne. 
-La fréquence de la PWM est donc de ** $ f_{PWM} ** = 714 \text{Hz} $, ce qui signifie qu'une face du rubik's cube peut faire un tour complet en **0,280 s**, ce qui est suffisant pour satisfaire le critère de rapidité du cahier des charges.
+La fréquence de la PWM est donc de **714 Hz**, ce qui signifie qu'une face du rubik's cube peut faire un tour complet en **0,280 s**, ce qui est suffisant pour satisfaire le critère de rapidité du cahier des charges.
 
 Nous avons testé de cette manière l'ensemble des moteurs et drivers. Cela nous a permis de voir qu'ils sont tous fonctionnels.
 
