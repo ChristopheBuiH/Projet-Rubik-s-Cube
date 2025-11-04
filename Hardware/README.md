@@ -55,16 +55,16 @@ Le driver utilisé comporte dix broches :
 
 | Broche | Fonction | Valeur |
 |---------|---------|------|
-| GND (x2) | Masse | - |
-| Vmot | Alimentation du moteur | 12V (entre 8V et 35V) |
-| STEP | signal de commande du moteur | Signal PWM |
-| DIR | Sens de rotation |  +/- 5V |
-| VDD | Alimentation du driver | 3,3V (entre 3V et 5,5V) |   
-| 2A, 1A, 1B, 2B  | entrées du moteur | - |
+| **GND** (x2) | Masse | - |
+| **Vmot** | Alimentation du moteur | 12V (entre 8V et 35V) |
+| **STEP** | signal de commande du moteur | Signal PWM |
+| **DIR** | Sens de rotation |  +/- 5V |
+| **VDD** | Alimentation du driver | 3,3V (entre 3V et 5,5V) |   
+| **2A, 1A, 1B, 2B**  | entrées du moteur | - |
 
-On souhaitait tout d'abord faire tourner le moteur dans une seule direction. On devait donc générer un signal PWM pour la broche STEP du driver. Pour cela, on a configuré une broche de la carte pour qu'elle génère le signal PWM à l'aide d'un Timer. La carte STM32 a également servi de source d'alimentation pour les broches VDD, Dir et GND.
+On souhaitait tout d'abord faire tourner le moteur dans une seule direction. On devait donc générer un signal PWM pour la broche **STEP** du driver. Pour cela, on a configuré une broche de la carte pour qu'elle génère le signal PWM à l'aide d'un timer. La carte STM32 a également servi de source d'alimentation pour les broches **VDD**, **DIR** et **GND**.
 
-Le signal PWM généré par la carte est caractérisée par sa fréquence et son rapport cyclique.
+Le signal PWM généré par la carte est caractérisée par sa **fréquence** et son **rapport cyclique**.
 
 
 La fréquence de la PWM est reliée à la fréquence de l'horloge :
@@ -78,7 +78,7 @@ Avec :
 
 - **PSC** : le prescaler
 
-- **ARR** : Auto-Reload Register
+- **ARR** : l'auto-Reload Register
 
 On a choisi **PSC = 84** et **ARR = 1999**, ce qui correspond donne une fréquence de :
 
@@ -89,7 +89,7 @@ $$
 Le rapport cyclique est réglé grâce au paramètre CCR de la PWM : 
 
 $$
-rapport_cyclique = \frac{CCR}{(Arr+1)}
+rapport_{cyclique} = \frac{CCR}{(Arr+1)}
 $$
 
 On souhaite avoir un rapport cyclique de 0,5. On choisit donc de prendre :
