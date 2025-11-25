@@ -43,7 +43,8 @@ Cependant, **de nouveaux composants** pourront être commandés en raison du **v
 **Date : 07/10/2025**
 
 - ✅ L’**algorithme de résolution** est trouvé  
-- 🧩 Le **code VHDL** est en cours d’écriture  
+- ✅ Le **code VHDL** est rédigé et validé en simulation
+- 🧩 La **communication entre le FPGA et le Processeur** est en cours de développement 
 - 🧾 Une **liste de composants** a été dressée
 
 ---
