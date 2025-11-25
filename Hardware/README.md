@@ -35,7 +35,7 @@ Dans une optique d'avoir un produit final de taille réduite, on veut un moteur 
 
 
 Cela nous a amené à choisir le modèle suivant : 17HE08-1004S , 
-[Référence moteur](https://www.amazon.fr/STEPPERONLINE-bipolaire-Longueur-imprimante-extrudeuse/dp/B0B93PNYCP/261-3319972-3897809?pd_rd_w=ZNp2j&content-id=amzn1.sym.a42e8b37-d3d3-4f9a-8311-e1db829f7bde&pf_rd_p=a42e8b37-d3d3-4f9a-8311-e1db829f7bde&pf_rd_r=CXAA8PGF1336S3D15ZZ1&pd_rd_wg=3EKfO&pd_rd_r=05e90827-fbcf-4a79-965a-68498e4e0b50&pd_rd_i=B0B93PNYCP&psc=1)
+[Référence moteur](https://www.stepperonline.ca/e-series-nema-17-bipolar-1-8deg-17ncm-24-07oz-in-1a-42x42x23mm-4-wires-17he08-1004s.html?srsltid=AfmBOoqD_WQaT4YcUpz0k2ZOEeU2qkR0t9uZcpgcZBa46N7mLR8tk0RL)
 
 
 | Caractéristique | Valeur |
@@ -90,7 +90,7 @@ $$
 Le rapport cyclique est réglé grâce au paramètre CCR de la PWM : 
 
 $$
-rapport~cyclique = \frac{CCR}{(Arr+1)}
+rapport~cyclique = \frac{CCR}{(ARR+1)}
 $$
 
 On souhaite avoir un rapport cyclique de 0,5. On choisit donc de prendre :
