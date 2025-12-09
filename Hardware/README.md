@@ -106,6 +106,12 @@ La fréquence de la PWM est donc de **714 Hz**, ce qui signifie qu'une face du r
 
 Nous avons testé de cette manière l'ensemble des moteurs et drivers. Cela nous a permis de voir qu'ils sont tous fonctionnels.
 
+# 2 - PCB pour le driver
+
+Nous avons décidé de réutiliser les modules avec driver faits l'année précédente pour piloter les moteurs. Cependant, il manquait un module. 
+On a donc reproduit sur kicad le module existant.
+
+Les fichiers gerbers qui ont été réalisés sont les suivants : [dossier Gerbers] (https://github.com/ChristopheBuiH/Projet-Rubik-s-Cube/blob/main/Hardware/gerbers_module_driver_V2.zip).
 
 
 
