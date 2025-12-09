@@ -1,0 +1,9 @@
+#include <stdio.h>
+#include <string.h>
+#include "utils.h"
+
+int main() {
+    char str[] = "100011110100100100011100110100100011100010010100100011011100100011011000111100010001100011111100011000110100";
+    separateur(str);
+    return 0;
+}
