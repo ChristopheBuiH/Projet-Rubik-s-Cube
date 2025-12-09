@@ -73,17 +73,14 @@ int main() {
     //int chaine = Recuperateur("C:\\Travail\\ENSEA\\2A\\Projet\\SaintGraal\\RUBIKSCUBESOLVER-Copie\\RubikSolver.jar", buffer, sizeof(buffer));
     separateur("10001111010010010001110011010010001110001001010010001101110010001101100011110001000110001111110001100", resultat);
 
-    resultat[31] = 0x3;
 
-    volatile uint32_t *reg_fpga = (uint32_t *)(IP_OFFSET);
-
-    *(reg_fpga+31) = 0x3;
-
-    for (int i = 0; i < 31; i++) {
+    /*volatile uint32_t *reg_fpga = (uint32_t *)(IP_OFFSET);
+    
+    for (int i = 0; i < 32; i++) {
         *(reg_fpga + i) = resultat[i];
-    }
+    }*/
 
-    printf("%u", resultat[0]);
+    printf("%u", resultat[30]);
 
 
 
