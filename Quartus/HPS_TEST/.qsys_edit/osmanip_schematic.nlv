@@ -1,0 +1,19 @@
+# # File gsaved with Nlview version 6.3.8  2013-12-19 bk=1.2992 VDI=34 GEI=35
+# 
+preplace inst osmanip.intel_niosv_g_0.hart -pg 1
+preplace inst osmanip.Osmanip_0 -pg 1 -lvl 3 -y 180
+preplace inst osmanip -pg 1 -lvl 1 -y 40 -regy -20
+preplace inst osmanip.clk_0 -pg 1 -lvl 1 -y 220
+preplace inst osmanip.intel_niosv_g_0.dbg_mod -pg 1
+preplace inst osmanip.intel_niosv_g_0.clock_bridge -pg 1
+preplace inst osmanip.intel_niosv_g_0 -pg 1 -lvl 2 -y 50
+preplace inst osmanip.intel_niosv_g_0.timer_module -pg 1
+preplace inst osmanip.intel_niosv_g_0.reset_bridge -pg 1
+preplace netloc FAN_OUT<net_container>osmanip</net_container>(SLAVE)Osmanip_0.reset_sink,(MASTER)clk_0.clk_reset,(SLAVE)intel_niosv_g_0.reset) 1 1 2 420 230 NJ
+preplace netloc EXPORT<net_container>osmanip</net_container>(SLAVE)osmanip.osmanip_0_external_connection,(SLAVE)Osmanip_0.external_connection) 1 0 3 NJ 210 NJ 210 NJ
+preplace netloc EXPORT<net_container>osmanip</net_container>(SLAVE)clk_0.clk_in_reset,(SLAVE)osmanip.reset) 1 0 1 NJ
+preplace netloc FAN_OUT<net_container>osmanip</net_container>(MASTER)clk_0.clk,(SLAVE)Osmanip_0.clock_sink,(SLAVE)intel_niosv_g_0.clk) 1 1 2 400 190 NJ
+preplace netloc INTERCONNECT<net_container>osmanip</net_container>(SLAVE)Osmanip_0.s1,(SLAVE)intel_niosv_g_0.timer_sw_agent,(MASTER)intel_niosv_g_0.instruction_manager,(SLAVE)intel_niosv_g_0.dm_agent,(MASTER)intel_niosv_g_0.data_manager) 1 1 2 440 170 750
+preplace netloc EXPORT<net_container>osmanip</net_container>(SLAVE)osmanip.clk,(SLAVE)clk_0.clk_in) 1 0 1 NJ
+levelinfo -pg 1 0 190 940
+levelinfo -hier osmanip 200 230 550 780 930
