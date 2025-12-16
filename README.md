@@ -40,12 +40,14 @@ Cependant, **de nouveaux composants** pourront être commandés en raison du **v
 
 ## 📆 Progression du projet
 
-**Date : 07/10/2025**
+**Date : 09/12/2025**
 
 - ✅ L’**algorithme de résolution** est trouvé  
 - ✅ Le **code VHDL** est rédigé et validé en simulation
-- 🧩 La **communication entre le FPGA et le Processeur** est en cours de développement 
+- 🧩 La **communication entre le FPGA et le Processeur** est en cours de développement -> Test éventuel avec carte le 16
 - 🧾 Une **liste de composants** a été dressée
+- Les PCB des drivers sont conçus
+- La structure est en cours de développement avec quelques parties d'ores et déjà imprimées.
 
 ---
 
