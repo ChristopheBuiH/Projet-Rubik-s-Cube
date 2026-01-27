@@ -38,7 +38,7 @@
 
 // ------------------------------------------
 // Generation parameters:
-//   output_name:        osmanip_mm_interconnect_0_avalon_st_adapter_001_error_adapter_0
+//   output_name:        osmanip_mm_interconnect_0_avalon_st_adapter_002_error_adapter_0
 //   use_ready:          true
 //   use_packets:        false
 //   use_empty:          0
@@ -63,7 +63,7 @@
 
 
 
-module osmanip_mm_interconnect_0_avalon_st_adapter_001_error_adapter_0
+module osmanip_mm_interconnect_0_avalon_st_adapter_002_error_adapter_0
 (
  // Interface: in
  output reg         in_ready,

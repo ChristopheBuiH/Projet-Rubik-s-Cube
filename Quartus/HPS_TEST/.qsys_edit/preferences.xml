@@ -9,7 +9,7 @@
   </columns>
  </systemtable>
  <library
-   expandedCategories="Project,Library/Basic Functions/On Chip Memory,Library/Basic Functions,Library" />
- <window width="1843" height="897" x="13" y="75" />
+   expandedCategories="Library/Basic Functions,Project,Library,Library/Basic Functions/On Chip Memory" />
+ <window width="942" height="897" x="13" y="75" />
  <generation synthesis="VHDL" />
 </preferences>

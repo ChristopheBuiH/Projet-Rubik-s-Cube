@@ -67,7 +67,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
   </table>
   <table class="blueBar">
    <tr>
-    <td class="l">2025.12.16.13:50:49</td>
+    <td class="l">2026.01.27.16:52:49</td>
     <td class="r">Datasheet</td>
    </tr>
   </table>
@@ -92,7 +92,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      <br/>All Components
      <br/>&#160;&#160;
      <a href="#module_Osmanip_0"><b>Osmanip_0</b>
-     </a> Osmanip 1.0
+     </a> Osmanip 2.0
      <br/>&#160;&#160;
      <a href="#module_intel_niosv_g_0"><b>intel_niosv_g_0</b>
      </a> intel_niosv_g 4.0.0
@@ -141,7 +141,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
   <a name="module_Osmanip_0"> </a>
   <div>
    <hr/>
-   <h2>Osmanip_0</h2>Osmanip v1.0
+   <h2>Osmanip_0</h2>Osmanip v2.0
    <br/>
    <div class="greydiv">
     <table class="connectionboxes">
@@ -201,20 +201,12 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
         <td class="parametervalue">8</td>
        </tr>
        <tr>
+        <td class="parametername">EXERNAL_DATA_LENGTH</td>
+        <td class="parametervalue">8</td>
+       </tr>
+       <tr>
         <td class="parametername">START_ADDR</td>
-        <td class="parametervalue">32</td>
-       </tr>
-       <tr>
-        <td class="parametername">PWM_PERIOD</td>
-        <td class="parametervalue">70000</td>
-       </tr>
-       <tr>
-        <td class="parametername">PWM_CYCLE</td>
-        <td class="parametervalue">35000</td>
-       </tr>
-       <tr>
-        <td class="parametername">QUARTER</td>
-        <td class="parametervalue">200</td>
+        <td class="parametervalue">31</td>
        </tr>
        <tr>
         <td class="parametername">deviceFamily</td>
@@ -310,7 +302,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
       <td class="from">data_manager&#160;&#160;</td>
       <td class="neighbor" rowspan="4">
-       <a href="#module_Osmanip_0">Osmanip_0</a>
+       <a href="#module_onchip_memory2_0">onchip_memory2_0</a>
       </td>
      </tr>
      <tr>
@@ -336,7 +328,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
       <td class="from">data_manager&#160;&#160;</td>
       <td class="neighbor" rowspan="4">
-       <a href="#module_onchip_memory2_0">onchip_memory2_0</a>
+       <a href="#module_Osmanip_0">Osmanip_0</a>
       </td>
      </tr>
      <tr>
@@ -369,11 +361,11 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">instSlaveMapParam</td>
-        <td class="parametervalue">&lt;address-map&gt;&lt;slave name='onchip_memory2_0.s1' start='0x0' end='0xF42400' type='altera_avalon_onchip_memory2.s1' /&gt;&lt;slave name='intel_niosv_g_0.dm_agent' start='0x1000000' end='0x1010000' type='intel_niosv_g.dm_agent' /&gt;&lt;slave name='Osmanip_0.s1' start='0x1010000' end='0x1010020' type='Osmanip.s1' /&gt;&lt;/address-map&gt;</td>
+        <td class="parametervalue">&lt;address-map&gt;&lt;slave name='intel_niosv_g_0.dm_agent' start='0x0' end='0x10000' type='intel_niosv_g.dm_agent' /&gt;&lt;slave name='onchip_memory2_0.s1' start='0x10000' end='0x11000' type='altera_avalon_onchip_memory2.s1' /&gt;&lt;slave name='Osmanip_0.s1' start='0x11000' end='0x11020' type='Osmanip.s1' /&gt;&lt;/address-map&gt;</td>
        </tr>
        <tr>
         <td class="parametername">dataSlaveMapParam</td>
-        <td class="parametervalue">&lt;address-map&gt;&lt;slave name='onchip_memory2_0.s1' start='0x0' end='0xF42400' type='altera_avalon_onchip_memory2.s1' /&gt;&lt;slave name='intel_niosv_g_0.dm_agent' start='0x1000000' end='0x1010000' type='intel_niosv_g.dm_agent' /&gt;&lt;slave name='Osmanip_0.s1' start='0x1010000' end='0x1010020' type='Osmanip.s1' /&gt;&lt;slave name='intel_niosv_g_0.timer_sw_agent' start='0x1010040' end='0x1010080' type='intel_niosv_g.timer_sw_agent' /&gt;&lt;/address-map&gt;</td>
+        <td class="parametervalue">&lt;address-map&gt;&lt;slave name='intel_niosv_g_0.dm_agent' start='0x0' end='0x10000' type='intel_niosv_g.dm_agent' /&gt;&lt;slave name='onchip_memory2_0.s1' start='0x10000' end='0x11000' type='altera_avalon_onchip_memory2.s1' /&gt;&lt;slave name='Osmanip_0.s1' start='0x11000' end='0x11020' type='Osmanip.s1' /&gt;&lt;slave name='intel_niosv_g_0.timer_sw_agent' start='0x11040' end='0x11080' type='intel_niosv_g.timer_sw_agent' /&gt;&lt;/address-map&gt;</td>
        </tr>
        <tr>
         <td class="parametername">enableMulDiv</td>
@@ -541,7 +533,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">peripheralRegionASize</td>
-        <td class="parametervalue">0</td>
+        <td class="parametervalue">65536</td>
        </tr>
        <tr>
         <td class="parametername">peripheralRegionABase</td>
@@ -678,7 +670,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">MTIME_OFFSET</td>
-        <td class="parametervalue">0x01010040</td>
+        <td class="parametervalue">0x00011040</td>
        </tr>
        <tr>
         <td class="parametername">NIOSV_CORE_VARIANT</td>
@@ -805,7 +797,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">memorySize</td>
-        <td class="parametervalue">16000000</td>
+        <td class="parametervalue">4096</td>
        </tr>
        <tr>
         <td class="parametername">readDuringWriteMode</td>
@@ -873,11 +865,11 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">derived_set_addr_width</td>
-        <td class="parametervalue">22</td>
+        <td class="parametervalue">10</td>
        </tr>
        <tr>
         <td class="parametername">derived_set_addr_width2</td>
-        <td class="parametervalue">22</td>
+        <td class="parametervalue">10</td>
        </tr>
        <tr>
         <td class="parametername">derived_set_data_width</td>
@@ -966,7 +958,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">SIZE_VALUE</td>
-        <td class="parametervalue">16000000</td>
+        <td class="parametervalue">4096</td>
        </tr>
        <tr>
         <td class="parametername">WRITABLE</td>
@@ -980,7 +972,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
   <table class="blueBar">
    <tr>
     <td class="l">generation took 0,00 seconds</td>
-    <td class="r">rendering took 0,02 seconds</td>
+    <td class="r">rendering took 0,01 seconds</td>
    </tr>
   </table>
  </body>

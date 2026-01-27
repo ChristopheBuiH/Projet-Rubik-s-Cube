@@ -49,14 +49,14 @@ module osmanip_mm_interconnect_0_router_006_default_decode
                DEFAULT_RD_CHANNEL = 1,
                DEFAULT_DESTID = 0 
    )
-  (output [107 - 106 : 0] default_destination_id,
+  (output [80 - 79 : 0] default_destination_id,
    output [4-1 : 0] default_wr_channel,
    output [4-1 : 0] default_rd_channel,
    output [4-1 : 0] default_src_channel
   );
 
   assign default_destination_id = 
-    DEFAULT_DESTID[107 - 106 : 0];
+    DEFAULT_DESTID[80 - 79 : 0];
 
   generate
     if (DEFAULT_CHANNEL == -1) begin : no_default_channel_assignment
@@ -93,7 +93,7 @@ module osmanip_mm_interconnect_0_router_006
     // Command Sink (Input)
     // -------------------
     input                       sink_valid,
-    input  [121-1 : 0]    sink_data,
+    input  [94-1 : 0]    sink_data,
     input                       sink_startofpacket,
     input                       sink_endofpacket,
     output                      sink_ready,
@@ -102,7 +102,7 @@ module osmanip_mm_interconnect_0_router_006
     // Command Source (Output)
     // -------------------
     output                          src_valid,
-    output reg [121-1    : 0] src_data,
+    output reg [94-1    : 0] src_data,
     output reg [4-1 : 0] src_channel,
     output                          src_startofpacket,
     output                          src_endofpacket,
@@ -112,18 +112,18 @@ module osmanip_mm_interconnect_0_router_006
     // -------------------------------------------------------
     // Local parameters and variables
     // -------------------------------------------------------
-    localparam PKT_ADDR_H = 67;
-    localparam PKT_ADDR_L = 36;
-    localparam PKT_DEST_ID_H = 107;
-    localparam PKT_DEST_ID_L = 106;
-    localparam PKT_PROTECTION_H = 111;
-    localparam PKT_PROTECTION_L = 109;
-    localparam ST_DATA_W = 121;
+    localparam PKT_ADDR_H = 40;
+    localparam PKT_ADDR_L = 9;
+    localparam PKT_DEST_ID_H = 80;
+    localparam PKT_DEST_ID_L = 79;
+    localparam PKT_PROTECTION_H = 84;
+    localparam PKT_PROTECTION_L = 82;
+    localparam ST_DATA_W = 94;
     localparam ST_CHANNEL_W = 4;
     localparam DECODER_TYPE = 1;
 
-    localparam PKT_TRANS_WRITE = 70;
-    localparam PKT_TRANS_READ  = 71;
+    localparam PKT_TRANS_WRITE = 43;
+    localparam PKT_TRANS_READ  = 44;
 
     localparam PKT_ADDR_W = PKT_ADDR_H-PKT_ADDR_L + 1;
     localparam PKT_DEST_ID_W = PKT_DEST_ID_H-PKT_DEST_ID_L + 1;
@@ -193,11 +193,19 @@ module osmanip_mm_interconnect_0_router_006
 
 
         if (destid == 0  && write_transaction) begin
-            src_channel = 4'b01;
+            src_channel = 4'b0001;
         end
 
         if (destid == 0  && read_transaction) begin
-            src_channel = 4'b10;
+            src_channel = 4'b0010;
+        end
+
+        if (destid == 1  && write_transaction) begin
+            src_channel = 4'b0100;
+        end
+
+        if (destid == 1  && read_transaction) begin
+            src_channel = 4'b1000;
         end
 
 

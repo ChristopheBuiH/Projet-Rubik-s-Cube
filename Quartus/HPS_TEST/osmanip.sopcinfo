@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="osmanip" kind="osmanip" version="1.0" fabric="QSYS">
  <!-- Format version 24.1 1077 (Future versions may contain additional information.) -->
- <!-- 2025.12.16.13:50:49 -->
+ <!-- 2026.01.27.16:52:49 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
-  <value>1765889449</value>
+  <value>1769529169</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -95,7 +95,7 @@
   <visible>true</visible>
   <valid>true</valid>
  </parameter>
- <module name="Osmanip_0" kind="Osmanip" version="1.0" path="Osmanip_0">
+ <module name="Osmanip_0" kind="Osmanip" version="2.0" path="Osmanip_0">
   <!-- Describes a single module. Module parameters are
 the requested settings for a module instance. -->
   <parameter name="ADDR_WIDTH">
@@ -122,33 +122,17 @@ the requested settings for a module instance. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
+  <parameter name="EXERNAL_DATA_LENGTH">
+   <type>int</type>
+   <value>8</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
   <parameter name="START_ADDR">
    <type>int</type>
-   <value>32</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="PWM_PERIOD">
-   <type>int</type>
-   <value>70000</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="PWM_CYCLE">
-   <type>int</type>
-   <value>35000</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="QUARTER">
-   <type>int</type>
-   <value>200</value>
+   <value>31</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -580,6 +564,51 @@ parameters are a RESULT of the module parameters. -->
     <role>clk</role>
    </port>
   </interface>
+  <interface name="external_connection" kind="conduit_end" version="24.1">
+   <!-- The connection points exposed by a module instance for the
+particular module parameters. Connection points and their
+parameters are a RESULT of the module parameters. -->
+   <parameter name="associatedClock">
+    <type>java.lang.String</type>
+    <value>clock_sink</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="associatedReset">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="deviceFamily">
+    <type>java.lang.String</type>
+    <value>UNKNOWN</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="generateLegacySim">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <type>conduit</type>
+   <isStart>false</isStart>
+   <port>
+    <name>pio_out</name>
+    <direction>Output</direction>
+    <width>8</width>
+    <role>export</role>
+   </port>
+  </interface>
   <interface name="reset_sink" kind="reset_sink" version="24.1">
    <!-- The connection points exposed by a module instance for the
 particular module parameters. Connection points and their
@@ -623,93 +652,6 @@ parameters are a RESULT of the module parameters. -->
     <direction>Input</direction>
     <width>1</width>
     <role>reset</role>
-   </port>
-  </interface>
-  <interface name="external_connection" kind="conduit_end" version="24.1">
-   <!-- The connection points exposed by a module instance for the
-particular module parameters. Connection points and their
-parameters are a RESULT of the module parameters. -->
-   <parameter name="associatedClock">
-    <type>java.lang.String</type>
-    <value>clock_sink</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="associatedReset">
-    <type>java.lang.String</type>
-    <value>reset_sink</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="deviceFamily">
-    <type>java.lang.String</type>
-    <value>UNKNOWN</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="generateLegacySim">
-    <type>boolean</type>
-    <value>false</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <type>conduit</type>
-   <isStart>false</isStart>
-   <port>
-    <name>o_mXa</name>
-    <direction>Output</direction>
-    <width>1</width>
-    <role>o_mxa</role>
-   </port>
-   <port>
-    <name>o_mXb</name>
-    <direction>Output</direction>
-    <width>1</width>
-    <role>o_mxb</role>
-   </port>
-   <port>
-    <name>o_mYa</name>
-    <direction>Output</direction>
-    <width>1</width>
-    <role>o_mya</role>
-   </port>
-   <port>
-    <name>o_mYb</name>
-    <direction>Output</direction>
-    <width>1</width>
-    <role>o_myb</role>
-   </port>
-   <port>
-    <name>o_mZa</name>
-    <direction>Output</direction>
-    <width>1</width>
-    <role>o_mza</role>
-   </port>
-   <port>
-    <name>o_mZb</name>
-    <direction>Output</direction>
-    <width>1</width>
-    <role>o_mzb</role>
-   </port>
-   <port>
-    <name>o_dirB</name>
-    <direction>Output</direction>
-    <width>1</width>
-    <role>o_dirb</role>
-   </port>
-   <port>
-    <name>o_dirA</name>
-    <direction>Output</direction>
-    <width>1</width>
-    <role>o_dira</role>
    </port>
   </interface>
  </module>
@@ -1090,7 +1032,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.MTIME_OFFSET</name>
-   <value>0x01010040</value>
+   <value>0x00011040</value>
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.NIOSV_CORE_VARIANT</name>
@@ -1224,7 +1166,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="instSlaveMapParam">
    <type>java.lang.String</type>
-   <value><![CDATA[<address-map><slave name='onchip_memory2_0.s1' start='0x0' end='0xF42400' type='altera_avalon_onchip_memory2.s1' /><slave name='intel_niosv_g_0.dm_agent' start='0x1000000' end='0x1010000' type='intel_niosv_g.dm_agent' /><slave name='Osmanip_0.s1' start='0x1010000' end='0x1010020' type='Osmanip.s1' /></address-map>]]></value>
+   <value><![CDATA[<address-map><slave name='intel_niosv_g_0.dm_agent' start='0x0' end='0x10000' type='intel_niosv_g.dm_agent' /><slave name='onchip_memory2_0.s1' start='0x10000' end='0x11000' type='altera_avalon_onchip_memory2.s1' /><slave name='Osmanip_0.s1' start='0x11000' end='0x11020' type='Osmanip.s1' /></address-map>]]></value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -1234,7 +1176,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="dataSlaveMapParam">
    <type>java.lang.String</type>
-   <value><![CDATA[<address-map><slave name='onchip_memory2_0.s1' start='0x0' end='0xF42400' type='altera_avalon_onchip_memory2.s1' /><slave name='intel_niosv_g_0.dm_agent' start='0x1000000' end='0x1010000' type='intel_niosv_g.dm_agent' /><slave name='Osmanip_0.s1' start='0x1010000' end='0x1010020' type='Osmanip.s1' /><slave name='intel_niosv_g_0.timer_sw_agent' start='0x1010040' end='0x1010080' type='intel_niosv_g.timer_sw_agent' /></address-map>]]></value>
+   <value><![CDATA[<address-map><slave name='intel_niosv_g_0.dm_agent' start='0x0' end='0x10000' type='intel_niosv_g.dm_agent' /><slave name='onchip_memory2_0.s1' start='0x10000' end='0x11000' type='altera_avalon_onchip_memory2.s1' /><slave name='Osmanip_0.s1' start='0x11000' end='0x11020' type='Osmanip.s1' /><slave name='intel_niosv_g_0.timer_sw_agent' start='0x11040' end='0x11080' type='intel_niosv_g.timer_sw_agent' /></address-map>]]></value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -1572,7 +1514,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="peripheralRegionASize">
    <type>java.math.BigInteger</type>
-   <value>0</value>
+   <value>65536</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -1582,7 +1524,7 @@ the requested settings for a module instance. -->
    <type>java.math.BigInteger</type>
    <value>0</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -2096,24 +2038,24 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>intel_niosv_g_0</moduleName>
     <slaveName>dm_agent</slaveName>
     <name>intel_niosv_g_0.dm_agent</name>
-    <baseAddress>16777216</baseAddress>
+    <baseAddress>0</baseAddress>
     <span>65536</span>
-   </memoryBlock>
-   <memoryBlock>
-    <isBridge>false</isBridge>
-    <moduleName>Osmanip_0</moduleName>
-    <slaveName>s1</slaveName>
-    <name>Osmanip_0.s1</name>
-    <baseAddress>16842752</baseAddress>
-    <span>32</span>
    </memoryBlock>
    <memoryBlock>
     <isBridge>false</isBridge>
     <moduleName>onchip_memory2_0</moduleName>
     <slaveName>s1</slaveName>
     <name>onchip_memory2_0.s1</name>
-    <baseAddress>0</baseAddress>
-    <span>16000000</span>
+    <baseAddress>65536</baseAddress>
+    <span>4096</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>Osmanip_0</moduleName>
+    <slaveName>s1</slaveName>
+    <name>Osmanip_0.s1</name>
+    <baseAddress>69632</baseAddress>
+    <span>32</span>
    </memoryBlock>
   </interface>
   <interface name="data_manager" kind="altera_axi4_master" version="24.1">
@@ -2365,31 +2307,31 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>intel_niosv_g_0</moduleName>
     <slaveName>dm_agent</slaveName>
     <name>intel_niosv_g_0.dm_agent</name>
-    <baseAddress>16777216</baseAddress>
+    <baseAddress>0</baseAddress>
     <span>65536</span>
-   </memoryBlock>
-   <memoryBlock>
-    <isBridge>false</isBridge>
-    <moduleName>Osmanip_0</moduleName>
-    <slaveName>s1</slaveName>
-    <name>Osmanip_0.s1</name>
-    <baseAddress>16842752</baseAddress>
-    <span>32</span>
    </memoryBlock>
    <memoryBlock>
     <isBridge>false</isBridge>
     <moduleName>onchip_memory2_0</moduleName>
     <slaveName>s1</slaveName>
     <name>onchip_memory2_0.s1</name>
-    <baseAddress>0</baseAddress>
-    <span>16000000</span>
+    <baseAddress>65536</baseAddress>
+    <span>4096</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>Osmanip_0</moduleName>
+    <slaveName>s1</slaveName>
+    <name>Osmanip_0.s1</name>
+    <baseAddress>69632</baseAddress>
+    <span>32</span>
    </memoryBlock>
    <memoryBlock>
     <isBridge>false</isBridge>
     <moduleName>intel_niosv_g_0</moduleName>
     <slaveName>timer_sw_agent</slaveName>
     <name>intel_niosv_g_0.timer_sw_agent</name>
-    <baseAddress>16842816</baseAddress>
+    <baseAddress>69696</baseAddress>
     <span>64</span>
    </memoryBlock>
   </interface>
@@ -3260,7 +3202,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.SIZE_VALUE</name>
-   <value>16000000</value>
+   <value>4096</value>
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.WRITABLE</name>
@@ -3276,15 +3218,15 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.memoryInfo.GENERATE_HEX</name>
-   <value>0</value>
+   <value>1</value>
   </assignment>
   <assignment>
    <name>embeddedsw.memoryInfo.HAS_BYTE_LANE</name>
    <value>0</value>
   </assignment>
   <assignment>
-   <name>embeddedsw.memoryInfo.INCLUDE_WARNING_MSG</name>
-   <value>On-chip memory size is too large for hex initialization file to be created.</value>
+   <name>embeddedsw.memoryInfo.HEX_INSTALL_DIR</name>
+   <value>QPF_DIR</value>
   </assignment>
   <assignment>
    <name>embeddedsw.memoryInfo.MEM_INIT_DATA_WIDTH</name>
@@ -3392,7 +3334,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="memorySize">
    <type>long</type>
-   <value>16000000</value>
+   <value>4096</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -3531,7 +3473,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="derived_set_addr_width">
    <type>int</type>
-   <value>22</value>
+   <value>10</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -3539,7 +3481,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="derived_set_addr_width2">
    <type>int</type>
-   <value>22</value>
+   <value>10</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -3676,7 +3618,7 @@ parameters are a RESULT of the module parameters. -->
    </parameter>
    <parameter name="addressSpan">
     <type>java.math.BigInteger</type>
-    <value>16000000</value>
+    <value>4096</value>
     <derived>true</derived>
     <enabled>true</enabled>
     <visible>false</visible>
@@ -3764,7 +3706,7 @@ parameters are a RESULT of the module parameters. -->
    </parameter>
    <parameter name="explicitAddressSpan">
     <type>java.math.BigInteger</type>
-    <value>16000000</value>
+    <value>4096</value>
     <derived>false</derived>
     <enabled>true</enabled>
     <visible>true</visible>
@@ -3975,7 +3917,7 @@ parameters are a RESULT of the module parameters. -->
    <port>
     <name>address</name>
     <direction>Input</direction>
-    <width>22</width>
+    <width>10</width>
     <role>address</role>
    </port>
    <port>
@@ -4083,7 +4025,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <parameter name="baseAddress">
    <type>java.math.BigInteger</type>
-   <value>0x01000000</value>
+   <value>0x0000</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -4119,57 +4061,6 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>dm_agent</endConnectionPoint>
  </connection>
  <connection
-   name="intel_niosv_g_0.data_manager/Osmanip_0.s1"
-   kind="avalon"
-   version="24.1"
-   start="intel_niosv_g_0.data_manager"
-   end="Osmanip_0.s1">
-  <parameter name="arbitrationPriority">
-   <type>int</type>
-   <value>1</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="baseAddress">
-   <type>java.math.BigInteger</type>
-   <value>0x01010000</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="defaultConnection">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="deviceFamily">
-   <type>java.lang.String</type>
-   <value>UNKNOWN</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="generateLegacySim">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <startModule>intel_niosv_g_0</startModule>
-  <startConnectionPoint>data_manager</startConnectionPoint>
-  <endModule>Osmanip_0</endModule>
-  <endConnectionPoint>s1</endConnectionPoint>
- </connection>
- <connection
    name="intel_niosv_g_0.data_manager/onchip_memory2_0.s1"
    kind="avalon"
    version="24.1"
@@ -4185,7 +4076,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <parameter name="baseAddress">
    <type>java.math.BigInteger</type>
-   <value>0x0000</value>
+   <value>0x00010000</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -4221,6 +4112,57 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>s1</endConnectionPoint>
  </connection>
  <connection
+   name="intel_niosv_g_0.data_manager/Osmanip_0.s1"
+   kind="avalon"
+   version="24.1"
+   start="intel_niosv_g_0.data_manager"
+   end="Osmanip_0.s1">
+  <parameter name="arbitrationPriority">
+   <type>int</type>
+   <value>1</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="baseAddress">
+   <type>java.math.BigInteger</type>
+   <value>0x00011000</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="defaultConnection">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <startModule>intel_niosv_g_0</startModule>
+  <startConnectionPoint>data_manager</startConnectionPoint>
+  <endModule>Osmanip_0</endModule>
+  <endConnectionPoint>s1</endConnectionPoint>
+ </connection>
+ <connection
    name="intel_niosv_g_0.data_manager/intel_niosv_g_0.timer_sw_agent"
    kind="avalon"
    version="24.1"
@@ -4236,7 +4178,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <parameter name="baseAddress">
    <type>java.math.BigInteger</type>
-   <value>0x01010040</value>
+   <value>0x00011040</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -4287,7 +4229,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <parameter name="baseAddress">
    <type>java.math.BigInteger</type>
-   <value>0x01000000</value>
+   <value>0x0000</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -4323,57 +4265,6 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>dm_agent</endConnectionPoint>
  </connection>
  <connection
-   name="intel_niosv_g_0.instruction_manager/Osmanip_0.s1"
-   kind="avalon"
-   version="24.1"
-   start="intel_niosv_g_0.instruction_manager"
-   end="Osmanip_0.s1">
-  <parameter name="arbitrationPriority">
-   <type>int</type>
-   <value>1</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="baseAddress">
-   <type>java.math.BigInteger</type>
-   <value>0x01010000</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="defaultConnection">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="deviceFamily">
-   <type>java.lang.String</type>
-   <value>UNKNOWN</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="generateLegacySim">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <startModule>intel_niosv_g_0</startModule>
-  <startConnectionPoint>instruction_manager</startConnectionPoint>
-  <endModule>Osmanip_0</endModule>
-  <endConnectionPoint>s1</endConnectionPoint>
- </connection>
- <connection
    name="intel_niosv_g_0.instruction_manager/onchip_memory2_0.s1"
    kind="avalon"
    version="24.1"
@@ -4389,7 +4280,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <parameter name="baseAddress">
    <type>java.math.BigInteger</type>
-   <value>0x0000</value>
+   <value>0x00010000</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -4422,6 +4313,57 @@ parameters are a RESULT of the module parameters. -->
   <startModule>intel_niosv_g_0</startModule>
   <startConnectionPoint>instruction_manager</startConnectionPoint>
   <endModule>onchip_memory2_0</endModule>
+  <endConnectionPoint>s1</endConnectionPoint>
+ </connection>
+ <connection
+   name="intel_niosv_g_0.instruction_manager/Osmanip_0.s1"
+   kind="avalon"
+   version="24.1"
+   start="intel_niosv_g_0.instruction_manager"
+   end="Osmanip_0.s1">
+  <parameter name="arbitrationPriority">
+   <type>int</type>
+   <value>1</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="baseAddress">
+   <type>java.math.BigInteger</type>
+   <value>0x00011000</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="defaultConnection">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <startModule>intel_niosv_g_0</startModule>
+  <startConnectionPoint>instruction_manager</startConnectionPoint>
+  <endModule>Osmanip_0</endModule>
   <endConnectionPoint>s1</endConnectionPoint>
  </connection>
  <connection
@@ -4592,7 +4534,7 @@ parameters are a RESULT of the module parameters. -->
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IModule</subtype>
   <displayName>Osmanip</displayName>
-  <version>1.0</version>
+  <version>2.0</version>
  </plugin>
  <plugin>
   <instanceCount>4</instanceCount>
@@ -4611,19 +4553,19 @@ parameters are a RESULT of the module parameters. -->
   <version>24.1</version>
  </plugin>
  <plugin>
-  <instanceCount>3</instanceCount>
-  <name>reset_sink</name>
-  <type>com.altera.entityinterfaces.IElementClass</type>
-  <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
-  <displayName>Reset Input</displayName>
-  <version>24.1</version>
- </plugin>
- <plugin>
   <instanceCount>1</instanceCount>
   <name>conduit_end</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
   <displayName>Conduit</displayName>
+  <version>24.1</version>
+ </plugin>
+ <plugin>
+  <instanceCount>3</instanceCount>
+  <name>reset_sink</name>
+  <type>com.altera.entityinterfaces.IElementClass</type>
+  <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
+  <displayName>Reset Input</displayName>
   <version>24.1</version>
  </plugin>
  <plugin>

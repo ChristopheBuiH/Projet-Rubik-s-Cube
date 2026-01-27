@@ -8,29 +8,20 @@ use IEEE.numeric_std.all;
 
 entity osmanip is
 	port (
-		clk_clk                              : in  std_logic := '0'; --                           clk.clk
-		osmanip_0_external_connection_o_mxa  : out std_logic;        -- osmanip_0_external_connection.o_mxa
-		osmanip_0_external_connection_o_mxb  : out std_logic;        --                              .o_mxb
-		osmanip_0_external_connection_o_mya  : out std_logic;        --                              .o_mya
-		osmanip_0_external_connection_o_myb  : out std_logic;        --                              .o_myb
-		osmanip_0_external_connection_o_mza  : out std_logic;        --                              .o_mza
-		osmanip_0_external_connection_o_mzb  : out std_logic;        --                              .o_mzb
-		osmanip_0_external_connection_o_dirb : out std_logic;        --                              .o_dirb
-		osmanip_0_external_connection_o_dira : out std_logic;        --                              .o_dira
-		reset_reset_n                        : in  std_logic := '0'  --                         reset.reset_n
+		clk_clk                                  : in  std_logic                    := '0'; --                               clk.clk
+		motor_control_external_connection_export : out std_logic_vector(7 downto 0);        -- motor_control_external_connection.export
+		reset_reset_n                            : in  std_logic                    := '0'  --                             reset.reset_n
 	);
 end entity osmanip;
 
 architecture rtl of osmanip is
-	component hps_dp_ram is
+	component controller_ip is
 		generic (
-			ADDR_WIDTH  : natural  := 5;
-			ARRAY_SIZE  : natural  := 32;
-			DATA_LENGTH : natural  := 8;
-			START_ADDR  : natural  := 32;
-			PWM_PERIOD  : positive := 70000;
-			PWM_CYCLE   : positive := 35000;
-			QUARTER     : positive := 200
+			ADDR_WIDTH          : natural := 5;
+			ARRAY_SIZE          : natural := 32;
+			DATA_LENGTH         : natural := 8;
+			EXERNAL_DATA_LENGTH : natural := 8;
+			START_ADDR          : natural := 31
 		);
 		port (
 			avs_s1_address   : in  std_logic_vector(4 downto 0) := (others => 'X'); -- address
@@ -39,17 +30,10 @@ architecture rtl of osmanip is
 			avs_s1_read      : in  std_logic                    := 'X';             -- read
 			avs_s1_readdata  : out std_logic_vector(7 downto 0);                    -- readdata
 			avs_s1_clk       : in  std_logic                    := 'X';             -- clk
-			avs_s1_reset     : in  std_logic                    := 'X';             -- reset
-			o_mXa            : out std_logic;                                       -- o_mxa
-			o_mXb            : out std_logic;                                       -- o_mxb
-			o_mYa            : out std_logic;                                       -- o_mya
-			o_mYb            : out std_logic;                                       -- o_myb
-			o_mZa            : out std_logic;                                       -- o_mza
-			o_mZb            : out std_logic;                                       -- o_mzb
-			o_dirB           : out std_logic;                                       -- o_dirb
-			o_dirA           : out std_logic                                        -- o_dira
+			pio_out          : out std_logic_vector(7 downto 0);                    -- export
+			avs_s1_reset     : in  std_logic                    := 'X'              -- reset
 		);
-	end component hps_dp_ram;
+	end component controller_ip;
 
 	component osmanip_intel_niosv_g_0 is
 		port (
@@ -129,7 +113,7 @@ architecture rtl of osmanip is
 	component osmanip_onchip_memory2_0 is
 		port (
 			clk        : in  std_logic                     := 'X';             -- clk
-			address    : in  std_logic_vector(21 downto 0) := (others => 'X'); -- address
+			address    : in  std_logic_vector(9 downto 0)  := (others => 'X'); -- address
 			clken      : in  std_logic                     := 'X';             -- clken
 			chipselect : in  std_logic                     := 'X';             -- chipselect
 			write      : in  std_logic                     := 'X';             -- write
@@ -213,7 +197,7 @@ architecture rtl of osmanip is
 			intel_niosv_g_0_timer_sw_agent_byteenable         : out std_logic_vector(3 downto 0);                     -- byteenable
 			intel_niosv_g_0_timer_sw_agent_readdatavalid      : in  std_logic                     := 'X';             -- readdatavalid
 			intel_niosv_g_0_timer_sw_agent_waitrequest        : in  std_logic                     := 'X';             -- waitrequest
-			onchip_memory2_0_s1_address                       : out std_logic_vector(21 downto 0);                    -- address
+			onchip_memory2_0_s1_address                       : out std_logic_vector(9 downto 0);                     -- address
 			onchip_memory2_0_s1_write                         : out std_logic;                                        -- write
 			onchip_memory2_0_s1_readdata                      : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
 			onchip_memory2_0_s1_writedata                     : out std_logic_vector(31 downto 0);                    -- writedata
@@ -361,18 +345,18 @@ architecture rtl of osmanip is
 	signal mm_interconnect_0_intel_niosv_g_0_dm_agent_readdatavalid       : std_logic;                     -- intel_niosv_g_0:dm_agent_readdatavalid -> mm_interconnect_0:intel_niosv_g_0_dm_agent_readdatavalid
 	signal mm_interconnect_0_intel_niosv_g_0_dm_agent_write               : std_logic;                     -- mm_interconnect_0:intel_niosv_g_0_dm_agent_write -> intel_niosv_g_0:dm_agent_write
 	signal mm_interconnect_0_intel_niosv_g_0_dm_agent_writedata           : std_logic_vector(31 downto 0); -- mm_interconnect_0:intel_niosv_g_0_dm_agent_writedata -> intel_niosv_g_0:dm_agent_writedata
+	signal mm_interconnect_0_onchip_memory2_0_s1_chipselect               : std_logic;                     -- mm_interconnect_0:onchip_memory2_0_s1_chipselect -> onchip_memory2_0:chipselect
+	signal mm_interconnect_0_onchip_memory2_0_s1_readdata                 : std_logic_vector(31 downto 0); -- onchip_memory2_0:readdata -> mm_interconnect_0:onchip_memory2_0_s1_readdata
+	signal mm_interconnect_0_onchip_memory2_0_s1_address                  : std_logic_vector(9 downto 0);  -- mm_interconnect_0:onchip_memory2_0_s1_address -> onchip_memory2_0:address
+	signal mm_interconnect_0_onchip_memory2_0_s1_byteenable               : std_logic_vector(3 downto 0);  -- mm_interconnect_0:onchip_memory2_0_s1_byteenable -> onchip_memory2_0:byteenable
+	signal mm_interconnect_0_onchip_memory2_0_s1_write                    : std_logic;                     -- mm_interconnect_0:onchip_memory2_0_s1_write -> onchip_memory2_0:write
+	signal mm_interconnect_0_onchip_memory2_0_s1_writedata                : std_logic_vector(31 downto 0); -- mm_interconnect_0:onchip_memory2_0_s1_writedata -> onchip_memory2_0:writedata
+	signal mm_interconnect_0_onchip_memory2_0_s1_clken                    : std_logic;                     -- mm_interconnect_0:onchip_memory2_0_s1_clken -> onchip_memory2_0:clken
 	signal mm_interconnect_0_osmanip_0_s1_readdata                        : std_logic_vector(7 downto 0);  -- Osmanip_0:avs_s1_readdata -> mm_interconnect_0:Osmanip_0_s1_readdata
 	signal mm_interconnect_0_osmanip_0_s1_address                         : std_logic_vector(4 downto 0);  -- mm_interconnect_0:Osmanip_0_s1_address -> Osmanip_0:avs_s1_address
 	signal mm_interconnect_0_osmanip_0_s1_read                            : std_logic;                     -- mm_interconnect_0:Osmanip_0_s1_read -> Osmanip_0:avs_s1_read
 	signal mm_interconnect_0_osmanip_0_s1_write                           : std_logic;                     -- mm_interconnect_0:Osmanip_0_s1_write -> Osmanip_0:avs_s1_write
 	signal mm_interconnect_0_osmanip_0_s1_writedata                       : std_logic_vector(7 downto 0);  -- mm_interconnect_0:Osmanip_0_s1_writedata -> Osmanip_0:avs_s1_writedata
-	signal mm_interconnect_0_onchip_memory2_0_s1_chipselect               : std_logic;                     -- mm_interconnect_0:onchip_memory2_0_s1_chipselect -> onchip_memory2_0:chipselect
-	signal mm_interconnect_0_onchip_memory2_0_s1_readdata                 : std_logic_vector(31 downto 0); -- onchip_memory2_0:readdata -> mm_interconnect_0:onchip_memory2_0_s1_readdata
-	signal mm_interconnect_0_onchip_memory2_0_s1_address                  : std_logic_vector(21 downto 0); -- mm_interconnect_0:onchip_memory2_0_s1_address -> onchip_memory2_0:address
-	signal mm_interconnect_0_onchip_memory2_0_s1_byteenable               : std_logic_vector(3 downto 0);  -- mm_interconnect_0:onchip_memory2_0_s1_byteenable -> onchip_memory2_0:byteenable
-	signal mm_interconnect_0_onchip_memory2_0_s1_write                    : std_logic;                     -- mm_interconnect_0:onchip_memory2_0_s1_write -> onchip_memory2_0:write
-	signal mm_interconnect_0_onchip_memory2_0_s1_writedata                : std_logic_vector(31 downto 0); -- mm_interconnect_0:onchip_memory2_0_s1_writedata -> onchip_memory2_0:writedata
-	signal mm_interconnect_0_onchip_memory2_0_s1_clken                    : std_logic;                     -- mm_interconnect_0:onchip_memory2_0_s1_clken -> onchip_memory2_0:clken
 	signal mm_interconnect_0_intel_niosv_g_0_timer_sw_agent_readdata      : std_logic_vector(31 downto 0); -- intel_niosv_g_0:timer_sw_agent_readdata -> mm_interconnect_0:intel_niosv_g_0_timer_sw_agent_readdata
 	signal mm_interconnect_0_intel_niosv_g_0_timer_sw_agent_waitrequest   : std_logic;                     -- intel_niosv_g_0:timer_sw_agent_waitrequest -> mm_interconnect_0:intel_niosv_g_0_timer_sw_agent_waitrequest
 	signal mm_interconnect_0_intel_niosv_g_0_timer_sw_agent_address       : std_logic_vector(5 downto 0);  -- mm_interconnect_0:intel_niosv_g_0_timer_sw_agent_address -> intel_niosv_g_0:timer_sw_agent_address
@@ -388,15 +372,13 @@ architecture rtl of osmanip is
 
 begin
 
-	osmanip_0 : component hps_dp_ram
+	osmanip_0 : component controller_ip
 		generic map (
-			ADDR_WIDTH  => 5,
-			ARRAY_SIZE  => 32,
-			DATA_LENGTH => 8,
-			START_ADDR  => 32,
-			PWM_PERIOD  => 70000,
-			PWM_CYCLE   => 35000,
-			QUARTER     => 200
+			ADDR_WIDTH          => 5,
+			ARRAY_SIZE          => 32,
+			DATA_LENGTH         => 8,
+			EXERNAL_DATA_LENGTH => 8,
+			START_ADDR          => 31
 		)
 		port map (
 			avs_s1_address   => mm_interconnect_0_osmanip_0_s1_address,   --                  s1.address
@@ -405,15 +387,8 @@ begin
 			avs_s1_read      => mm_interconnect_0_osmanip_0_s1_read,      --                    .read
 			avs_s1_readdata  => mm_interconnect_0_osmanip_0_s1_readdata,  --                    .readdata
 			avs_s1_clk       => clk_clk,                                  --          clock_sink.clk
-			avs_s1_reset     => rst_controller_reset_out_reset,           --          reset_sink.reset
-			o_mXa            => osmanip_0_external_connection_o_mxa,      -- external_connection.o_mxa
-			o_mXb            => osmanip_0_external_connection_o_mxb,      --                    .o_mxb
-			o_mYa            => osmanip_0_external_connection_o_mya,      --                    .o_mya
-			o_mYb            => osmanip_0_external_connection_o_myb,      --                    .o_myb
-			o_mZa            => osmanip_0_external_connection_o_mza,      --                    .o_mza
-			o_mZb            => osmanip_0_external_connection_o_mzb,      --                    .o_mzb
-			o_dirB           => osmanip_0_external_connection_o_dirb,     --                    .o_dirb
-			o_dirA           => osmanip_0_external_connection_o_dira      --                    .o_dira
+			pio_out          => motor_control_external_connection_export, -- external_connection.export
+			avs_s1_reset     => rst_controller_reset_out_reset            --          reset_sink.reset
 		);
 
 	intel_niosv_g_0 : component osmanip_intel_niosv_g_0
