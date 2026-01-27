@@ -13,6 +13,7 @@ port(
     i_en    : in std_logic;
 
     i_data  : in std_logic_vector(5 downto 0);
+    o_next_cmd  : out std_logic;
 
     o_mXa   : out std_logic; -- sortie pwm moteur A axe X (+X)
     o_mXb   : out std_logic; -- sortie pwm moteur B axe X (-X)
@@ -22,9 +23,7 @@ port(
     o_mZb   : out std_logic; -- ...                       (-Z)
 
     o_dirA  : out std_logic; -- inverse la direction de la voie A
-    o_dirB  : out std_logic; -- inverse la direction de la voie B
-
-    o_next_cmd  : out std_logic
+    o_dirB  : out std_logic  -- inverse la direction de la voie B
 );
 end entity command;
 
@@ -37,7 +36,7 @@ architecture archCommand of command is
     signal s_done       : std_logic;
 begin
     -- Generate PWM
-    process(i_clk)
+    process(i_clk, i_rst)
         variable counter : natural range 0 to PWM_PERIOD := 0;  -- compteur de période de clk
     begin
 		if (rising_edge(i_clk)) then         -- generateur pwm
@@ -64,11 +63,13 @@ begin
     end process;
 
     -- Enable motors, and go to next instruction
-    process(i_clk)
+    process(i_clk, i_rst)
     begin
         if (rising_edge(i_clk)) then
             if (i_rst = '1') then
                 s_done <= '0';
+                s_en_motA <= '0';
+                s_en_motB <= '0';
             elsif (i_en = '1') then
                 if (s_step < QUARTER) then
                     if ((i_data(3) or i_data(2)) = '1') then    -- (soit not = "00")
