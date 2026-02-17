@@ -1,8 +1,20 @@
 # # File gsaved with Nlview version 6.3.8  2013-12-19 bk=1.2992 VDI=34 GEI=35
 # 
-preplace inst unsaved.clk_0 -pg 1 -lvl 1 -y 30
-preplace inst unsaved -pg 1 -lvl 1 -y 40 -regy -20
-preplace netloc EXPORT<net_container>unsaved</net_container>(SLAVE)unsaved.reset,(SLAVE)clk_0.clk_in_reset) 1 0 1 NJ
-preplace netloc EXPORT<net_container>unsaved</net_container>(SLAVE)clk_0.clk_in,(SLAVE)unsaved.clk) 1 0 1 NJ
-levelinfo -pg 1 0 50 270
-levelinfo -hier unsaved 60 90 260
+preplace inst osmanip.intel_niosv_g_0.hart -pg 1
+preplace inst osmanip.Osmanip_0 -pg 1 -lvl 3 -y 200
+preplace inst osmanip -pg 1 -lvl 1 -y 40 -regy -20
+preplace inst osmanip.onchip_memory2_0 -pg 1 -lvl 3 -y 120
+preplace inst osmanip.clk_0 -pg 1 -lvl 1 -y 240
+preplace inst osmanip.intel_niosv_g_0.dbg_mod -pg 1
+preplace inst osmanip.intel_niosv_g_0.clock_bridge -pg 1
+preplace inst osmanip.intel_niosv_g_0 -pg 1 -lvl 2 -y 50
+preplace inst osmanip.intel_niosv_g_0.timer_module -pg 1
+preplace inst osmanip.intel_niosv_g_0.reset_bridge -pg 1
+preplace netloc EXPORT<net_container>osmanip</net_container>(SLAVE)clk_0.clk_in,(SLAVE)osmanip.clk) 1 0 1 NJ
+preplace netloc FAN_OUT<net_container>osmanip</net_container>(SLAVE)intel_niosv_g_0.reset,(SLAVE)onchip_memory2_0.reset1,(SLAVE)Osmanip_0.reset_sink,(MASTER)clk_0.clk_reset) 1 1 2 430 190 800
+preplace netloc EXPORT<net_container>osmanip</net_container>(SLAVE)clk_0.clk_in_reset,(SLAVE)osmanip.reset) 1 0 1 NJ
+preplace netloc EXPORT<net_container>osmanip</net_container>(SLAVE)osmanip.motor_control_external_connection,(SLAVE)Osmanip_0.external_connection) 1 0 3 NJ 230 NJ 230 NJ
+preplace netloc INTERCONNECT<net_container>osmanip</net_container>(SLAVE)Osmanip_0.s1,(MASTER)intel_niosv_g_0.instruction_manager,(SLAVE)intel_niosv_g_0.dm_agent,(SLAVE)intel_niosv_g_0.timer_sw_agent,(SLAVE)onchip_memory2_0.s1,(MASTER)intel_niosv_g_0.data_manager) 1 1 2 450 210 780
+preplace netloc FAN_OUT<net_container>osmanip</net_container>(SLAVE)onchip_memory2_0.clk1,(SLAVE)Osmanip_0.clock_sink,(MASTER)clk_0.clk,(SLAVE)intel_niosv_g_0.clk) 1 1 2 410 170 760
+levelinfo -pg 1 0 200 1010
+levelinfo -hier osmanip 210 240 560 850 1000
