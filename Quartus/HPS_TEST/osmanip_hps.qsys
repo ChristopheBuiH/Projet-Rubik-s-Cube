@@ -41,6 +41,14 @@
          type = "int";
       }
    }
+   element hps_0.f2h_axi_slave
+   {
+      datum baseAddress
+      {
+         value = "0";
+         type = "String";
+      }
+   }
    element onchip_memory2_0
    {
       datum _sortIndex

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="RubikSolver2">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/RUBIKSCUBESOLVER_Final/RubikSolver.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

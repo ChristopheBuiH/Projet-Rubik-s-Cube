@@ -17,7 +17,7 @@
 -- PROGRAM "Quartus Prime"
 -- VERSION "Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition"
 
--- DATE "12/16/2025 13:53:12"
+-- DATE "03/17/2026 14:02:22"
 
 -- 
 -- Device: Altera 5CSEMA4U23C6 Package UFBGA672
@@ -34,59 +34,56 @@ USE ALTERA_LNSIM.ALTERA_LNSIM_COMPONENTS.ALL;
 USE CYCLONEV.CYCLONEV_COMPONENTS.ALL;
 USE IEEE.STD_LOGIC_1164.ALL;
 
-ENTITY 	hps_dp_ram IS
+ENTITY 	controller_ip IS
     PORT (
 	avs_s1_clk : IN std_logic;
 	avs_s1_reset : IN std_logic;
 	avs_s1_address : IN std_logic_vector(4 DOWNTO 0);
 	avs_s1_write : IN std_logic;
-	avs_s1_writedata : IN std_logic_vector(5 DOWNTO 0);
+	avs_s1_writedata : IN std_logic_vector(7 DOWNTO 0);
 	avs_s1_read : IN std_logic;
-	avs_s1_readdata : BUFFER std_logic_vector(5 DOWNTO 0);
-	o_mXa : BUFFER std_logic;
-	o_mXb : BUFFER std_logic;
-	o_mYa : BUFFER std_logic;
-	o_mYb : BUFFER std_logic;
-	o_mZa : BUFFER std_logic;
-	o_mZb : BUFFER std_logic;
-	o_dirA : BUFFER std_logic;
-	o_dirB : BUFFER std_logic
+	avs_s1_readdata : OUT std_logic_vector(7 DOWNTO 0);
+	pio_out : OUT std_logic_vector(7 DOWNTO 0)
 	);
-END hps_dp_ram;
+END controller_ip;
 
 -- Design Ports Information
--- avs_s1_readdata[0]	=>  Location: PIN_AH22,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- avs_s1_readdata[0]	=>  Location: PIN_V12,	 I/O Standard: 2.5 V,	 Current Strength: Default
 -- avs_s1_readdata[1]	=>  Location: PIN_AA23,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- avs_s1_readdata[2]	=>  Location: PIN_AE17,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- avs_s1_readdata[3]	=>  Location: PIN_AF27,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- avs_s1_readdata[4]	=>  Location: PIN_AG28,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- avs_s1_readdata[5]	=>  Location: PIN_Y4,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- o_mXa	=>  Location: PIN_AH16,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- o_mXb	=>  Location: PIN_AB23,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- o_mYa	=>  Location: PIN_U14,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- o_mYb	=>  Location: PIN_AH5,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- o_mZa	=>  Location: PIN_T11,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- o_mZb	=>  Location: PIN_AE19,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- o_dirA	=>  Location: PIN_V10,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- o_dirB	=>  Location: PIN_AE25,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- avs_s1_reset	=>  Location: PIN_AH14,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- avs_s1_write	=>  Location: PIN_AE26,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- avs_s1_address[0]	=>  Location: PIN_U10,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- avs_s1_address[1]	=>  Location: PIN_Y5,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- avs_s1_address[2]	=>  Location: PIN_AH17,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- avs_s1_address[3]	=>  Location: PIN_AA20,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- avs_s1_address[4]	=>  Location: PIN_T8,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- avs_s1_writedata[0]	=>  Location: PIN_AF5,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- avs_s1_writedata[1]	=>  Location: PIN_AE24,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- avs_s1_writedata[2]	=>  Location: PIN_T13,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- avs_s1_writedata[3]	=>  Location: PIN_AG11,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- avs_s1_writedata[4]	=>  Location: PIN_AE11,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- avs_s1_writedata[5]	=>  Location: PIN_AG21,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- avs_s1_clk	=>  Location: PIN_AF17,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- avs_s1_read	=>  Location: PIN_AH27,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- avs_s1_readdata[2]	=>  Location: PIN_AG19,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- avs_s1_readdata[3]	=>  Location: PIN_AE15,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- avs_s1_readdata[4]	=>  Location: PIN_AH19,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- avs_s1_readdata[5]	=>  Location: PIN_AF28,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- avs_s1_readdata[6]	=>  Location: PIN_Y4,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- avs_s1_readdata[7]	=>  Location: PIN_AH16,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- pio_out[0]	=>  Location: PIN_AB23,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- pio_out[1]	=>  Location: PIN_U14,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- pio_out[2]	=>  Location: PIN_AD19,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- pio_out[3]	=>  Location: PIN_AH4,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- pio_out[4]	=>  Location: PIN_AE9,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- pio_out[5]	=>  Location: PIN_AE19,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- pio_out[6]	=>  Location: PIN_V10,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- pio_out[7]	=>  Location: PIN_AE25,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- avs_s1_writedata[6]	=>  Location: PIN_AG28,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- avs_s1_writedata[7]	=>  Location: PIN_AE26,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- avs_s1_clk	=>  Location: PIN_AG5,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- avs_s1_reset	=>  Location: PIN_U10,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- avs_s1_read	=>  Location: PIN_AH11,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- avs_s1_address[0]	=>  Location: PIN_AH22,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- avs_s1_address[1]	=>  Location: PIN_AA20,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- avs_s1_address[2]	=>  Location: PIN_AA11,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- avs_s1_address[3]	=>  Location: PIN_AF9,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- avs_s1_address[4]	=>  Location: PIN_W15,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- avs_s1_write	=>  Location: PIN_AH14,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- avs_s1_writedata[5]	=>  Location: PIN_H4,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- avs_s1_writedata[4]	=>  Location: PIN_AG10,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- avs_s1_writedata[3]	=>  Location: PIN_AH9,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- avs_s1_writedata[2]	=>  Location: PIN_AF25,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- avs_s1_writedata[0]	=>  Location: PIN_AF17,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- avs_s1_writedata[1]	=>  Location: PIN_AH27,	 I/O Standard: 2.5 V,	 Current Strength: Default
 
 
-ARCHITECTURE structure OF hps_dp_ram IS
+ARCHITECTURE structure OF controller_ip IS
 SIGNAL gnd : std_logic := '0';
 SIGNAL vcc : std_logic := '1';
 SIGNAL unknown : std_logic := 'X';
@@ -100,32 +97,27 @@ SIGNAL ww_avs_s1_clk : std_logic;
 SIGNAL ww_avs_s1_reset : std_logic;
 SIGNAL ww_avs_s1_address : std_logic_vector(4 DOWNTO 0);
 SIGNAL ww_avs_s1_write : std_logic;
-SIGNAL ww_avs_s1_writedata : std_logic_vector(5 DOWNTO 0);
+SIGNAL ww_avs_s1_writedata : std_logic_vector(7 DOWNTO 0);
 SIGNAL ww_avs_s1_read : std_logic;
-SIGNAL ww_avs_s1_readdata : std_logic_vector(5 DOWNTO 0);
-SIGNAL ww_o_mXa : std_logic;
-SIGNAL ww_o_mXb : std_logic;
-SIGNAL ww_o_mYa : std_logic;
-SIGNAL ww_o_mYb : std_logic;
-SIGNAL ww_o_mZa : std_logic;
-SIGNAL ww_o_mZb : std_logic;
-SIGNAL ww_o_dirA : std_logic;
-SIGNAL ww_o_dirB : std_logic;
+SIGNAL ww_avs_s1_readdata : std_logic_vector(7 DOWNTO 0);
+SIGNAL ww_pio_out : std_logic_vector(7 DOWNTO 0);
+SIGNAL \avs_s1_writedata[6]~input_o\ : std_logic;
+SIGNAL \avs_s1_writedata[7]~input_o\ : std_logic;
+SIGNAL \avs_s1_clk~input_o\ : std_logic;
 SIGNAL \avs_s1_reset~input_o\ : std_logic;
-SIGNAL \avs_s1_write~input_o\ : std_logic;
+SIGNAL \avs_s1_read~input_o\ : std_logic;
 SIGNAL \avs_s1_address[0]~input_o\ : std_logic;
 SIGNAL \avs_s1_address[1]~input_o\ : std_logic;
 SIGNAL \avs_s1_address[2]~input_o\ : std_logic;
 SIGNAL \avs_s1_address[3]~input_o\ : std_logic;
 SIGNAL \avs_s1_address[4]~input_o\ : std_logic;
+SIGNAL \avs_s1_write~input_o\ : std_logic;
+SIGNAL \avs_s1_writedata[5]~input_o\ : std_logic;
+SIGNAL \avs_s1_writedata[4]~input_o\ : std_logic;
+SIGNAL \avs_s1_writedata[3]~input_o\ : std_logic;
+SIGNAL \avs_s1_writedata[2]~input_o\ : std_logic;
 SIGNAL \avs_s1_writedata[0]~input_o\ : std_logic;
 SIGNAL \avs_s1_writedata[1]~input_o\ : std_logic;
-SIGNAL \avs_s1_writedata[2]~input_o\ : std_logic;
-SIGNAL \avs_s1_writedata[3]~input_o\ : std_logic;
-SIGNAL \avs_s1_writedata[4]~input_o\ : std_logic;
-SIGNAL \avs_s1_writedata[5]~input_o\ : std_logic;
-SIGNAL \avs_s1_clk~input_o\ : std_logic;
-SIGNAL \avs_s1_read~input_o\ : std_logic;
 SIGNAL \~QUARTUS_CREATED_GND~I_combout\ : std_logic;
 
 BEGIN
@@ -137,19 +129,12 @@ ww_avs_s1_write <= avs_s1_write;
 ww_avs_s1_writedata <= avs_s1_writedata;
 ww_avs_s1_read <= avs_s1_read;
 avs_s1_readdata <= ww_avs_s1_readdata;
-o_mXa <= ww_o_mXa;
-o_mXb <= ww_o_mXb;
-o_mYa <= ww_o_mYa;
-o_mYb <= ww_o_mYb;
-o_mZa <= ww_o_mZa;
-o_mZb <= ww_o_mZb;
-o_dirA <= ww_o_dirA;
-o_dirB <= ww_o_dirB;
+pio_out <= ww_pio_out;
 ww_devoe <= devoe;
 ww_devclrn <= devclrn;
 ww_devpor <= devpor;
 
--- Location: IOOBUF_X59_Y0_N53
+-- Location: IOOBUF_X21_Y0_N2
 \avs_s1_readdata[0]~output\ : cyclonev_io_obuf
 -- pragma translate_off
 GENERIC MAP (
@@ -175,7 +160,7 @@ PORT MAP (
 	devoe => ww_devoe,
 	o => ww_avs_s1_readdata(1));
 
--- Location: IOOBUF_X44_Y0_N19
+-- Location: IOOBUF_X51_Y0_N36
 \avs_s1_readdata[2]~output\ : cyclonev_io_obuf
 -- pragma translate_off
 GENERIC MAP (
@@ -188,7 +173,7 @@ PORT MAP (
 	devoe => ww_devoe,
 	o => ww_avs_s1_readdata(2));
 
--- Location: IOOBUF_X66_Y0_N36
+-- Location: IOOBUF_X36_Y0_N19
 \avs_s1_readdata[3]~output\ : cyclonev_io_obuf
 -- pragma translate_off
 GENERIC MAP (
@@ -201,7 +186,7 @@ PORT MAP (
 	devoe => ww_devoe,
 	o => ww_avs_s1_readdata(3));
 
--- Location: IOOBUF_X65_Y0_N36
+-- Location: IOOBUF_X51_Y0_N53
 \avs_s1_readdata[4]~output\ : cyclonev_io_obuf
 -- pragma translate_off
 GENERIC MAP (
@@ -214,7 +199,7 @@ PORT MAP (
 	devoe => ww_devoe,
 	o => ww_avs_s1_readdata(4));
 
--- Location: IOOBUF_X2_Y0_N93
+-- Location: IOOBUF_X66_Y0_N53
 \avs_s1_readdata[5]~output\ : cyclonev_io_obuf
 -- pragma translate_off
 GENERIC MAP (
@@ -227,8 +212,8 @@ PORT MAP (
 	devoe => ww_devoe,
 	o => ww_avs_s1_readdata(5));
 
--- Location: IOOBUF_X46_Y0_N53
-\o_mXa~output\ : cyclonev_io_obuf
+-- Location: IOOBUF_X2_Y0_N93
+\avs_s1_readdata[6]~output\ : cyclonev_io_obuf
 -- pragma translate_off
 GENERIC MAP (
 	bus_hold => "false",
@@ -238,10 +223,23 @@ GENERIC MAP (
 PORT MAP (
 	i => GND,
 	devoe => ww_devoe,
-	o => ww_o_mXa);
+	o => ww_avs_s1_readdata(6));
+
+-- Location: IOOBUF_X46_Y0_N53
+\avs_s1_readdata[7]~output\ : cyclonev_io_obuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	open_drain_output => "false",
+	shift_series_termination_control => "false")
+-- pragma translate_on
+PORT MAP (
+	i => GND,
+	devoe => ww_devoe,
+	o => ww_avs_s1_readdata(7));
 
 -- Location: IOOBUF_X68_Y12_N56
-\o_mXb~output\ : cyclonev_io_obuf
+\pio_out[0]~output\ : cyclonev_io_obuf
 -- pragma translate_off
 GENERIC MAP (
 	bus_hold => "false",
@@ -251,10 +249,10 @@ GENERIC MAP (
 PORT MAP (
 	i => GND,
 	devoe => ww_devoe,
-	o => ww_o_mXb);
+	o => ww_pio_out(0));
 
 -- Location: IOOBUF_X34_Y0_N2
-\o_mYa~output\ : cyclonev_io_obuf
+\pio_out[1]~output\ : cyclonev_io_obuf
 -- pragma translate_off
 GENERIC MAP (
 	bus_hold => "false",
@@ -264,10 +262,10 @@ GENERIC MAP (
 PORT MAP (
 	i => GND,
 	devoe => ww_devoe,
-	o => ww_o_mYa);
+	o => ww_pio_out(1));
 
--- Location: IOOBUF_X21_Y0_N53
-\o_mYb~output\ : cyclonev_io_obuf
+-- Location: IOOBUF_X48_Y0_N59
+\pio_out[2]~output\ : cyclonev_io_obuf
 -- pragma translate_off
 GENERIC MAP (
 	bus_hold => "false",
@@ -277,10 +275,10 @@ GENERIC MAP (
 PORT MAP (
 	i => GND,
 	devoe => ww_devoe,
-	o => ww_o_mYb);
+	o => ww_pio_out(2));
 
--- Location: IOOBUF_X12_Y0_N2
-\o_mZa~output\ : cyclonev_io_obuf
+-- Location: IOOBUF_X19_Y0_N53
+\pio_out[3]~output\ : cyclonev_io_obuf
 -- pragma translate_off
 GENERIC MAP (
 	bus_hold => "false",
@@ -290,10 +288,23 @@ GENERIC MAP (
 PORT MAP (
 	i => GND,
 	devoe => ww_devoe,
-	o => ww_o_mZa);
+	o => ww_pio_out(3));
+
+-- Location: IOOBUF_X10_Y0_N59
+\pio_out[4]~output\ : cyclonev_io_obuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	open_drain_output => "false",
+	shift_series_termination_control => "false")
+-- pragma translate_on
+PORT MAP (
+	i => GND,
+	devoe => ww_devoe,
+	o => ww_pio_out(4));
 
 -- Location: IOOBUF_X48_Y0_N42
-\o_mZb~output\ : cyclonev_io_obuf
+\pio_out[5]~output\ : cyclonev_io_obuf
 -- pragma translate_off
 GENERIC MAP (
 	bus_hold => "false",
@@ -303,10 +314,10 @@ GENERIC MAP (
 PORT MAP (
 	i => GND,
 	devoe => ww_devoe,
-	o => ww_o_mZb);
+	o => ww_pio_out(5));
 
 -- Location: IOOBUF_X6_Y0_N19
-\o_dirA~output\ : cyclonev_io_obuf
+\pio_out[6]~output\ : cyclonev_io_obuf
 -- pragma translate_off
 GENERIC MAP (
 	bus_hold => "false",
@@ -316,10 +327,10 @@ GENERIC MAP (
 PORT MAP (
 	i => GND,
 	devoe => ww_devoe,
-	o => ww_o_dirA);
+	o => ww_pio_out(6));
 
 -- Location: IOOBUF_X68_Y11_N39
-\o_dirB~output\ : cyclonev_io_obuf
+\pio_out[7]~output\ : cyclonev_io_obuf
 -- pragma translate_off
 GENERIC MAP (
 	bus_hold => "false",
@@ -329,152 +340,31 @@ GENERIC MAP (
 PORT MAP (
 	i => GND,
 	devoe => ww_devoe,
-	o => ww_o_dirB);
+	o => ww_pio_out(7));
 
--- Location: IOIBUF_X44_Y0_N52
-\avs_s1_reset~input\ : cyclonev_io_ibuf
+-- Location: IOIBUF_X65_Y0_N35
+\avs_s1_writedata[6]~input\ : cyclonev_io_ibuf
 -- pragma translate_off
 GENERIC MAP (
 	bus_hold => "false",
 	simulate_z_as => "z")
 -- pragma translate_on
 PORT MAP (
-	i => ww_avs_s1_reset,
-	o => \avs_s1_reset~input_o\);
+	i => ww_avs_s1_writedata(6),
+	o => \avs_s1_writedata[6]~input_o\);
 
 -- Location: IOIBUF_X68_Y10_N95
-\avs_s1_write~input\ : cyclonev_io_ibuf
+\avs_s1_writedata[7]~input\ : cyclonev_io_ibuf
 -- pragma translate_off
 GENERIC MAP (
 	bus_hold => "false",
 	simulate_z_as => "z")
 -- pragma translate_on
 PORT MAP (
-	i => ww_avs_s1_write,
-	o => \avs_s1_write~input_o\);
+	i => ww_avs_s1_writedata(7),
+	o => \avs_s1_writedata[7]~input_o\);
 
--- Location: IOIBUF_X6_Y0_N1
-\avs_s1_address[0]~input\ : cyclonev_io_ibuf
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	simulate_z_as => "z")
--- pragma translate_on
-PORT MAP (
-	i => ww_avs_s1_address(0),
-	o => \avs_s1_address[0]~input_o\);
-
--- Location: IOIBUF_X2_Y0_N75
-\avs_s1_address[1]~input\ : cyclonev_io_ibuf
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	simulate_z_as => "z")
--- pragma translate_on
-PORT MAP (
-	i => ww_avs_s1_address(1),
-	o => \avs_s1_address[1]~input_o\);
-
--- Location: IOIBUF_X46_Y0_N35
-\avs_s1_address[2]~input\ : cyclonev_io_ibuf
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	simulate_z_as => "z")
--- pragma translate_on
-PORT MAP (
-	i => ww_avs_s1_address(2),
-	o => \avs_s1_address[2]~input_o\);
-
--- Location: IOIBUF_X68_Y10_N44
-\avs_s1_address[3]~input\ : cyclonev_io_ibuf
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	simulate_z_as => "z")
--- pragma translate_on
-PORT MAP (
-	i => ww_avs_s1_address(3),
-	o => \avs_s1_address[3]~input_o\);
-
--- Location: IOIBUF_X4_Y0_N18
-\avs_s1_address[4]~input\ : cyclonev_io_ibuf
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	simulate_z_as => "z")
--- pragma translate_on
-PORT MAP (
-	i => ww_avs_s1_address(4),
-	o => \avs_s1_address[4]~input_o\);
-
--- Location: IOIBUF_X15_Y0_N35
-\avs_s1_writedata[0]~input\ : cyclonev_io_ibuf
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	simulate_z_as => "z")
--- pragma translate_on
-PORT MAP (
-	i => ww_avs_s1_writedata(0),
-	o => \avs_s1_writedata[0]~input_o\);
-
--- Location: IOIBUF_X62_Y0_N41
-\avs_s1_writedata[1]~input\ : cyclonev_io_ibuf
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	simulate_z_as => "z")
--- pragma translate_on
-PORT MAP (
-	i => ww_avs_s1_writedata(1),
-	o => \avs_s1_writedata[1]~input_o\);
-
--- Location: IOIBUF_X18_Y0_N1
-\avs_s1_writedata[2]~input\ : cyclonev_io_ibuf
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	simulate_z_as => "z")
--- pragma translate_on
-PORT MAP (
-	i => ww_avs_s1_writedata(2),
-	o => \avs_s1_writedata[2]~input_o\);
-
--- Location: IOIBUF_X38_Y0_N35
-\avs_s1_writedata[3]~input\ : cyclonev_io_ibuf
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	simulate_z_as => "z")
--- pragma translate_on
-PORT MAP (
-	i => ww_avs_s1_writedata(3),
-	o => \avs_s1_writedata[3]~input_o\);
-
--- Location: IOIBUF_X14_Y0_N18
-\avs_s1_writedata[4]~input\ : cyclonev_io_ibuf
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	simulate_z_as => "z")
--- pragma translate_on
-PORT MAP (
-	i => ww_avs_s1_writedata(4),
-	o => \avs_s1_writedata[4]~input_o\);
-
--- Location: IOIBUF_X55_Y0_N75
-\avs_s1_writedata[5]~input\ : cyclonev_io_ibuf
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	simulate_z_as => "z")
--- pragma translate_on
-PORT MAP (
-	i => ww_avs_s1_writedata(5),
-	o => \avs_s1_writedata[5]~input_o\);
-
--- Location: IOIBUF_X40_Y0_N41
+-- Location: IOIBUF_X19_Y0_N35
 \avs_s1_clk~input\ : cyclonev_io_ibuf
 -- pragma translate_off
 GENERIC MAP (
@@ -485,7 +375,18 @@ PORT MAP (
 	i => ww_avs_s1_clk,
 	o => \avs_s1_clk~input_o\);
 
--- Location: IOIBUF_X65_Y0_N52
+-- Location: IOIBUF_X6_Y0_N1
+\avs_s1_reset~input\ : cyclonev_io_ibuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	simulate_z_as => "z")
+-- pragma translate_on
+PORT MAP (
+	i => ww_avs_s1_reset,
+	o => \avs_s1_reset~input_o\);
+
+-- Location: IOIBUF_X38_Y0_N52
 \avs_s1_read~input\ : cyclonev_io_ibuf
 -- pragma translate_off
 GENERIC MAP (
@@ -496,7 +397,139 @@ PORT MAP (
 	i => ww_avs_s1_read,
 	o => \avs_s1_read~input_o\);
 
--- Location: LABCELL_X58_Y7_N0
+-- Location: IOIBUF_X59_Y0_N52
+\avs_s1_address[0]~input\ : cyclonev_io_ibuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	simulate_z_as => "z")
+-- pragma translate_on
+PORT MAP (
+	i => ww_avs_s1_address(0),
+	o => \avs_s1_address[0]~input_o\);
+
+-- Location: IOIBUF_X68_Y10_N44
+\avs_s1_address[1]~input\ : cyclonev_io_ibuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	simulate_z_as => "z")
+-- pragma translate_on
+PORT MAP (
+	i => ww_avs_s1_address(1),
+	o => \avs_s1_address[1]~input_o\);
+
+-- Location: IOIBUF_X7_Y0_N18
+\avs_s1_address[2]~input\ : cyclonev_io_ibuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	simulate_z_as => "z")
+-- pragma translate_on
+PORT MAP (
+	i => ww_avs_s1_address(2),
+	o => \avs_s1_address[2]~input_o\);
+
+-- Location: IOIBUF_X14_Y0_N52
+\avs_s1_address[3]~input\ : cyclonev_io_ibuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	simulate_z_as => "z")
+-- pragma translate_on
+PORT MAP (
+	i => ww_avs_s1_address(3),
+	o => \avs_s1_address[3]~input_o\);
+
+-- Location: IOIBUF_X68_Y12_N21
+\avs_s1_address[4]~input\ : cyclonev_io_ibuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	simulate_z_as => "z")
+-- pragma translate_on
+PORT MAP (
+	i => ww_avs_s1_address(4),
+	o => \avs_s1_address[4]~input_o\);
+
+-- Location: IOIBUF_X44_Y0_N52
+\avs_s1_write~input\ : cyclonev_io_ibuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	simulate_z_as => "z")
+-- pragma translate_on
+PORT MAP (
+	i => ww_avs_s1_write,
+	o => \avs_s1_write~input_o\);
+
+-- Location: IOIBUF_X2_Y61_N92
+\avs_s1_writedata[5]~input\ : cyclonev_io_ibuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	simulate_z_as => "z")
+-- pragma translate_on
+PORT MAP (
+	i => ww_avs_s1_writedata(5),
+	o => \avs_s1_writedata[5]~input_o\);
+
+-- Location: IOIBUF_X36_Y0_N35
+\avs_s1_writedata[4]~input\ : cyclonev_io_ibuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	simulate_z_as => "z")
+-- pragma translate_on
+PORT MAP (
+	i => ww_avs_s1_writedata(4),
+	o => \avs_s1_writedata[4]~input_o\);
+
+-- Location: IOIBUF_X36_Y0_N52
+\avs_s1_writedata[3]~input\ : cyclonev_io_ibuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	simulate_z_as => "z")
+-- pragma translate_on
+PORT MAP (
+	i => ww_avs_s1_writedata(3),
+	o => \avs_s1_writedata[3]~input_o\);
+
+-- Location: IOIBUF_X65_Y0_N1
+\avs_s1_writedata[2]~input\ : cyclonev_io_ibuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	simulate_z_as => "z")
+-- pragma translate_on
+PORT MAP (
+	i => ww_avs_s1_writedata(2),
+	o => \avs_s1_writedata[2]~input_o\);
+
+-- Location: IOIBUF_X40_Y0_N41
+\avs_s1_writedata[0]~input\ : cyclonev_io_ibuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	simulate_z_as => "z")
+-- pragma translate_on
+PORT MAP (
+	i => ww_avs_s1_writedata(0),
+	o => \avs_s1_writedata[0]~input_o\);
+
+-- Location: IOIBUF_X65_Y0_N52
+\avs_s1_writedata[1]~input\ : cyclonev_io_ibuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	simulate_z_as => "z")
+-- pragma translate_on
+PORT MAP (
+	i => ww_avs_s1_writedata(1),
+	o => \avs_s1_writedata[1]~input_o\);
+
+-- Location: LABCELL_X15_Y48_N3
 \~QUARTUS_CREATED_GND~I\ : cyclonev_lcell_comb
 -- Equation(s):
 

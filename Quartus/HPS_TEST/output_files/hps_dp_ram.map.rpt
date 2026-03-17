@@ -1,5 +1,5 @@
 Analysis & Synthesis report for hps_dp_ram
-Tue Mar 17 13:55:29 2026
+Tue Mar 17 14:01:39 2026
 Quartus Prime Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
 
 
@@ -10,7 +10,19 @@ Quartus Prime Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
   2. Analysis & Synthesis Summary
   3. Analysis & Synthesis Settings
   4. Parallel Compilation
-  5. Analysis & Synthesis Messages
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |controller_ip|present
+  9. Registers Removed During Synthesis
+ 10. Removed Registers Triggering Further Register Optimizations
+ 11. General Register Statistics
+ 12. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 13. Parameter Settings for User Entity Instance: Top-level Entity: |controller_ip
+ 14. Parameter Settings for User Entity Instance: command:cmd0
+ 15. Post-Synthesis Netlist Statistics for Top Partition
+ 16. Elapsed Time Per Partition
+ 17. Analysis & Synthesis Messages
 
 
 
@@ -34,22 +46,27 @@ on the Quartus Prime software download page.
 
 
 
-+-------------------------------------------------------------------------------+
-; Analysis & Synthesis Summary                                                  ;
-+-----------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status ; Failed - Tue Mar 17 13:55:29 2026               ;
-; Quartus Prime Version       ; 24.1std.0 Build 1077 03/04/2025 SC Lite Edition ;
-; Revision Name               ; hps_dp_ram                                      ;
-; Top-level Entity Name       ; hps_dp_ram                                      ;
-; Family                      ; Cyclone V                                       ;
-; Logic utilization (in ALMs) ; N/A until Partition Merge                       ;
-; Total registers             ; N/A until Partition Merge                       ;
-; Total pins                  ; N/A until Partition Merge                       ;
-; Total virtual pins          ; N/A until Partition Merge                       ;
-; Total block memory bits     ; N/A until Partition Merge                       ;
-; Total PLLs                  ; N/A until Partition Merge                       ;
-; Total DLLs                  ; N/A until Partition Merge                       ;
-+-----------------------------+-------------------------------------------------+
++-----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                      ;
++---------------------------------+-------------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Tue Mar 17 14:01:39 2026           ;
+; Quartus Prime Version           ; 24.1std.0 Build 1077 03/04/2025 SC Lite Edition ;
+; Revision Name                   ; hps_dp_ram                                      ;
+; Top-level Entity Name           ; controller_ip                                   ;
+; Family                          ; Cyclone V                                       ;
+; Logic utilization (in ALMs)     ; N/A                                             ;
+; Total registers                 ; 0                                               ;
+; Total pins                      ; 33                                              ;
+; Total virtual pins              ; 0                                               ;
+; Total block memory bits         ; 0                                               ;
+; Total DSP Blocks                ; 0                                               ;
+; Total HSSI RX PCSs              ; 0                                               ;
+; Total HSSI PMA RX Deserializers ; 0                                               ;
+; Total HSSI TX PCSs              ; 0                                               ;
+; Total HSSI PMA TX Serializers   ; 0                                               ;
+; Total PLLs                      ; 0                                               ;
+; Total DLLs                      ; 0                                               ;
++---------------------------------+-------------------------------------------------+
 
 
 +---------------------------------------------------------------------------------------------------------------------------+
@@ -58,7 +75,7 @@ on the Quartus Prime software download page.
 ; Option                                                                          ; Setting            ; Default Value      ;
 +---------------------------------------------------------------------------------+--------------------+--------------------+
 ; Device                                                                          ; 5CSEMA4U23C6       ;                    ;
-; Top-level entity name                                                           ; hps_dp_ram         ; hps_dp_ram         ;
+; Top-level entity name                                                           ; controller_ip      ; hps_dp_ram         ;
 ; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
 ; Use smart compilation                                                           ; Off                ; Off                ;
 ; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
@@ -155,25 +172,535 @@ on the Quartus Prime software download page.
 +----------------------------+-------------+
 
 
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                             ;
++-----------------------------------+-----------------+-----------------+----------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path  ; Used in Netlist ; File Type       ; File Name with Absolute Path                                                     ; Library ;
++-----------------------------------+-----------------+-----------------+----------------------------------------------------------------------------------+---------+
+; ../../Code VHDL/controller_ip.vhd ; yes             ; User VHDL File  ; C:/Users/Osmane/Documents/GitHub/Projet-Rubik-s-Cube/Code VHDL/controller_ip.vhd ;         ;
+; ../../Code VHDL/command.vhd       ; yes             ; User VHDL File  ; C:/Users/Osmane/Documents/GitHub/Projet-Rubik-s-Cube/Code VHDL/command.vhd       ;         ;
++-----------------------------------+-----------------+-----------------+----------------------------------------------------------------------------------+---------+
+
+
++-------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                             ;
++---------------------------------------------+---------------------------+
+; Resource                                    ; Usage                     ;
++---------------------------------------------+---------------------------+
+; Estimate of Logic utilization (ALMs needed) ; 0                         ;
+;                                             ;                           ;
+; Combinational ALUT usage for logic          ; 0                         ;
+;     -- 7 input functions                    ; 0                         ;
+;     -- 6 input functions                    ; 0                         ;
+;     -- 5 input functions                    ; 0                         ;
+;     -- 4 input functions                    ; 0                         ;
+;     -- <=3 input functions                  ; 0                         ;
+;                                             ;                           ;
+; Dedicated logic registers                   ; 0                         ;
+;                                             ;                           ;
+; I/O pins                                    ; 33                        ;
+;                                             ;                           ;
+; Total DSP Blocks                            ; 0                         ;
+;                                             ;                           ;
+; Maximum fan-out node                        ; avs_s1_readdata[0]~output ;
+; Maximum fan-out                             ; 1                         ;
+; Total fan-out                               ; 33                        ;
+; Average fan-out                             ; 0.50                      ;
++---------------------------------------------+---------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                      ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+---------------+--------------+
+; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name ; Entity Name   ; Library Name ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+---------------+--------------+
+; |controller_ip             ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 33   ; 0            ; |controller_ip      ; controller_ip ; work         ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+---------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------+
+; State Machine - |controller_ip|present                         ;
++----------------+----------------+---------------+--------------+
+; Name           ; present.SOLVED ; present.START ; present.LOAD ;
++----------------+----------------+---------------+--------------+
+; present.LOAD   ; 0              ; 0             ; 0            ;
+; present.START  ; 0              ; 1             ; 1            ;
+; present.SOLVED ; 1              ; 0             ; 1            ;
++----------------+----------------+---------------+--------------+
+
+
++---------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                    ;
++-----------------------------------------+---------------------------------------------+
+; Register name                           ; Reason for Removal                          ;
++-----------------------------------------+---------------------------------------------+
+; present.LOAD                            ; Lost fanout                                 ;
+; present.SOLVED                          ; Lost fanout                                 ;
+; table~21                                ; Lost fanout                                 ;
+; table~22                                ; Lost fanout                                 ;
+; table~29                                ; Lost fanout                                 ;
+; table~30                                ; Lost fanout                                 ;
+; table~37                                ; Lost fanout                                 ;
+; table~38                                ; Lost fanout                                 ;
+; table~45                                ; Lost fanout                                 ;
+; table~46                                ; Lost fanout                                 ;
+; table~53                                ; Lost fanout                                 ;
+; table~54                                ; Lost fanout                                 ;
+; table~61                                ; Lost fanout                                 ;
+; table~62                                ; Lost fanout                                 ;
+; table~69                                ; Lost fanout                                 ;
+; table~70                                ; Lost fanout                                 ;
+; table~77                                ; Lost fanout                                 ;
+; table~78                                ; Lost fanout                                 ;
+; table~85                                ; Lost fanout                                 ;
+; table~86                                ; Lost fanout                                 ;
+; table~93                                ; Lost fanout                                 ;
+; table~94                                ; Lost fanout                                 ;
+; table~101                               ; Lost fanout                                 ;
+; table~102                               ; Lost fanout                                 ;
+; table~109                               ; Lost fanout                                 ;
+; table~110                               ; Lost fanout                                 ;
+; table~117                               ; Lost fanout                                 ;
+; table~118                               ; Lost fanout                                 ;
+; table~125                               ; Lost fanout                                 ;
+; table~126                               ; Lost fanout                                 ;
+; table~133                               ; Lost fanout                                 ;
+; table~134                               ; Lost fanout                                 ;
+; table~141                               ; Lost fanout                                 ;
+; table~142                               ; Lost fanout                                 ;
+; table~149                               ; Lost fanout                                 ;
+; table~150                               ; Lost fanout                                 ;
+; table~157                               ; Lost fanout                                 ;
+; table~158                               ; Lost fanout                                 ;
+; table~165                               ; Lost fanout                                 ;
+; table~166                               ; Lost fanout                                 ;
+; table~173                               ; Lost fanout                                 ;
+; table~174                               ; Lost fanout                                 ;
+; table~181                               ; Lost fanout                                 ;
+; table~182                               ; Lost fanout                                 ;
+; table~189                               ; Lost fanout                                 ;
+; table~190                               ; Lost fanout                                 ;
+; table~197                               ; Lost fanout                                 ;
+; table~198                               ; Lost fanout                                 ;
+; table~205                               ; Lost fanout                                 ;
+; table~206                               ; Lost fanout                                 ;
+; table~213                               ; Lost fanout                                 ;
+; table~214                               ; Lost fanout                                 ;
+; table~221                               ; Lost fanout                                 ;
+; table~222                               ; Lost fanout                                 ;
+; table~229                               ; Lost fanout                                 ;
+; table~230                               ; Lost fanout                                 ;
+; table~237                               ; Lost fanout                                 ;
+; table~238                               ; Lost fanout                                 ;
+; table~245                               ; Lost fanout                                 ;
+; table~246                               ; Lost fanout                                 ;
+; table~253                               ; Lost fanout                                 ;
+; table~254                               ; Lost fanout                                 ;
+; table~261                               ; Lost fanout                                 ;
+; table~262                               ; Lost fanout                                 ;
+; table~269                               ; Lost fanout                                 ;
+; table~270                               ; Lost fanout                                 ;
+; table~271                               ; Lost fanout                                 ;
+; table~272                               ; Lost fanout                                 ;
+; table~273                               ; Lost fanout                                 ;
+; table~274                               ; Lost fanout                                 ;
+; table~275                               ; Lost fanout                                 ;
+; table~276                               ; Lost fanout                                 ;
+; table~277                               ; Lost fanout                                 ;
+; table~278                               ; Lost fanout                                 ;
+; present.START                           ; Stuck at GND due to stuck port data_in      ;
+; s_cmd_data[5]                           ; Stuck at GND due to stuck port clock_enable ;
+; table~60                                ; Lost fanout                                 ;
+; table~76                                ; Lost fanout                                 ;
+; table~52                                ; Lost fanout                                 ;
+; table~28                                ; Lost fanout                                 ;
+; table~44                                ; Lost fanout                                 ;
+; table~20                                ; Lost fanout                                 ;
+; table~36                                ; Lost fanout                                 ;
+; table~68                                ; Lost fanout                                 ;
+; table~124                               ; Lost fanout                                 ;
+; table~140                               ; Lost fanout                                 ;
+; table~116                               ; Lost fanout                                 ;
+; table~92                                ; Lost fanout                                 ;
+; table~108                               ; Lost fanout                                 ;
+; table~84                                ; Lost fanout                                 ;
+; table~100                               ; Lost fanout                                 ;
+; table~132                               ; Lost fanout                                 ;
+; table~188                               ; Lost fanout                                 ;
+; table~204                               ; Lost fanout                                 ;
+; table~180                               ; Lost fanout                                 ;
+; table~156                               ; Lost fanout                                 ;
+; table~172                               ; Lost fanout                                 ;
+; table~148                               ; Lost fanout                                 ;
+; table~164                               ; Lost fanout                                 ;
+; table~196                               ; Lost fanout                                 ;
+; table~252                               ; Lost fanout                                 ;
+; table~268                               ; Lost fanout                                 ;
+; table~244                               ; Lost fanout                                 ;
+; table~220                               ; Lost fanout                                 ;
+; table~236                               ; Lost fanout                                 ;
+; table~212                               ; Lost fanout                                 ;
+; table~228                               ; Lost fanout                                 ;
+; table~260                               ; Lost fanout                                 ;
+; s_cmd_data[4]                           ; Stuck at GND due to stuck port clock_enable ;
+; table~59                                ; Lost fanout                                 ;
+; table~75                                ; Lost fanout                                 ;
+; table~51                                ; Lost fanout                                 ;
+; table~27                                ; Lost fanout                                 ;
+; table~43                                ; Lost fanout                                 ;
+; table~19                                ; Lost fanout                                 ;
+; table~35                                ; Lost fanout                                 ;
+; table~67                                ; Lost fanout                                 ;
+; table~123                               ; Lost fanout                                 ;
+; table~139                               ; Lost fanout                                 ;
+; table~115                               ; Lost fanout                                 ;
+; table~91                                ; Lost fanout                                 ;
+; table~107                               ; Lost fanout                                 ;
+; table~83                                ; Lost fanout                                 ;
+; table~99                                ; Lost fanout                                 ;
+; table~131                               ; Lost fanout                                 ;
+; table~187                               ; Lost fanout                                 ;
+; table~203                               ; Lost fanout                                 ;
+; table~179                               ; Lost fanout                                 ;
+; table~155                               ; Lost fanout                                 ;
+; table~171                               ; Lost fanout                                 ;
+; table~147                               ; Lost fanout                                 ;
+; table~163                               ; Lost fanout                                 ;
+; table~195                               ; Lost fanout                                 ;
+; table~251                               ; Lost fanout                                 ;
+; table~267                               ; Lost fanout                                 ;
+; table~243                               ; Lost fanout                                 ;
+; table~219                               ; Lost fanout                                 ;
+; table~235                               ; Lost fanout                                 ;
+; table~211                               ; Lost fanout                                 ;
+; table~227                               ; Lost fanout                                 ;
+; table~259                               ; Lost fanout                                 ;
+; command:cmd0|s_en_motA                  ; Lost fanout                                 ;
+; command:cmd0|s_en_motB                  ; Lost fanout                                 ;
+; s_cmd_data[3]                           ; Stuck at GND due to stuck port clock_enable ;
+; table~58                                ; Lost fanout                                 ;
+; table~74                                ; Lost fanout                                 ;
+; table~50                                ; Lost fanout                                 ;
+; table~26                                ; Lost fanout                                 ;
+; table~42                                ; Lost fanout                                 ;
+; table~18                                ; Lost fanout                                 ;
+; table~34                                ; Lost fanout                                 ;
+; table~66                                ; Lost fanout                                 ;
+; table~122                               ; Lost fanout                                 ;
+; table~138                               ; Lost fanout                                 ;
+; table~114                               ; Lost fanout                                 ;
+; table~90                                ; Lost fanout                                 ;
+; table~106                               ; Lost fanout                                 ;
+; table~82                                ; Lost fanout                                 ;
+; table~98                                ; Lost fanout                                 ;
+; table~130                               ; Lost fanout                                 ;
+; table~186                               ; Lost fanout                                 ;
+; table~202                               ; Lost fanout                                 ;
+; table~178                               ; Lost fanout                                 ;
+; table~154                               ; Lost fanout                                 ;
+; table~170                               ; Lost fanout                                 ;
+; table~146                               ; Lost fanout                                 ;
+; table~162                               ; Lost fanout                                 ;
+; table~194                               ; Lost fanout                                 ;
+; table~250                               ; Lost fanout                                 ;
+; table~266                               ; Lost fanout                                 ;
+; table~242                               ; Lost fanout                                 ;
+; table~218                               ; Lost fanout                                 ;
+; table~234                               ; Lost fanout                                 ;
+; table~210                               ; Lost fanout                                 ;
+; table~226                               ; Lost fanout                                 ;
+; table~258                               ; Lost fanout                                 ;
+; s_cmd_data[2]                           ; Stuck at GND due to stuck port clock_enable ;
+; table~57                                ; Lost fanout                                 ;
+; table~73                                ; Lost fanout                                 ;
+; table~49                                ; Lost fanout                                 ;
+; table~25                                ; Lost fanout                                 ;
+; table~41                                ; Lost fanout                                 ;
+; table~17                                ; Lost fanout                                 ;
+; table~33                                ; Lost fanout                                 ;
+; table~65                                ; Lost fanout                                 ;
+; table~121                               ; Lost fanout                                 ;
+; table~137                               ; Lost fanout                                 ;
+; table~113                               ; Lost fanout                                 ;
+; table~89                                ; Lost fanout                                 ;
+; table~105                               ; Lost fanout                                 ;
+; table~81                                ; Lost fanout                                 ;
+; table~97                                ; Lost fanout                                 ;
+; table~129                               ; Lost fanout                                 ;
+; table~185                               ; Lost fanout                                 ;
+; table~201                               ; Lost fanout                                 ;
+; table~177                               ; Lost fanout                                 ;
+; table~153                               ; Lost fanout                                 ;
+; table~169                               ; Lost fanout                                 ;
+; table~145                               ; Lost fanout                                 ;
+; table~161                               ; Lost fanout                                 ;
+; table~193                               ; Lost fanout                                 ;
+; table~249                               ; Lost fanout                                 ;
+; table~265                               ; Lost fanout                                 ;
+; table~241                               ; Lost fanout                                 ;
+; table~217                               ; Lost fanout                                 ;
+; table~233                               ; Lost fanout                                 ;
+; table~209                               ; Lost fanout                                 ;
+; table~225                               ; Lost fanout                                 ;
+; table~257                               ; Lost fanout                                 ;
+; s_cmd_data[0]                           ; Stuck at GND due to stuck port clock_enable ;
+; table~55                                ; Lost fanout                                 ;
+; table~71                                ; Lost fanout                                 ;
+; table~47                                ; Lost fanout                                 ;
+; table~23                                ; Lost fanout                                 ;
+; table~39                                ; Lost fanout                                 ;
+; table~15                                ; Lost fanout                                 ;
+; table~31                                ; Lost fanout                                 ;
+; table~63                                ; Lost fanout                                 ;
+; table~119                               ; Lost fanout                                 ;
+; table~135                               ; Lost fanout                                 ;
+; table~111                               ; Lost fanout                                 ;
+; table~87                                ; Lost fanout                                 ;
+; table~103                               ; Lost fanout                                 ;
+; table~79                                ; Lost fanout                                 ;
+; table~95                                ; Lost fanout                                 ;
+; table~127                               ; Lost fanout                                 ;
+; table~183                               ; Lost fanout                                 ;
+; table~199                               ; Lost fanout                                 ;
+; table~175                               ; Lost fanout                                 ;
+; table~151                               ; Lost fanout                                 ;
+; table~167                               ; Lost fanout                                 ;
+; table~143                               ; Lost fanout                                 ;
+; table~159                               ; Lost fanout                                 ;
+; table~191                               ; Lost fanout                                 ;
+; table~247                               ; Lost fanout                                 ;
+; table~263                               ; Lost fanout                                 ;
+; table~239                               ; Lost fanout                                 ;
+; table~215                               ; Lost fanout                                 ;
+; table~231                               ; Lost fanout                                 ;
+; table~207                               ; Lost fanout                                 ;
+; table~223                               ; Lost fanout                                 ;
+; table~255                               ; Lost fanout                                 ;
+; s_cmd_data[1]                           ; Stuck at GND due to stuck port clock_enable ;
+; table~56                                ; Lost fanout                                 ;
+; table~72                                ; Lost fanout                                 ;
+; table~48                                ; Lost fanout                                 ;
+; table~24                                ; Lost fanout                                 ;
+; table~40                                ; Lost fanout                                 ;
+; table~16                                ; Lost fanout                                 ;
+; table~32                                ; Lost fanout                                 ;
+; table~64                                ; Lost fanout                                 ;
+; table~120                               ; Lost fanout                                 ;
+; table~136                               ; Lost fanout                                 ;
+; table~112                               ; Lost fanout                                 ;
+; table~88                                ; Lost fanout                                 ;
+; table~104                               ; Lost fanout                                 ;
+; table~80                                ; Lost fanout                                 ;
+; table~96                                ; Lost fanout                                 ;
+; table~128                               ; Lost fanout                                 ;
+; table~184                               ; Lost fanout                                 ;
+; table~200                               ; Lost fanout                                 ;
+; table~176                               ; Lost fanout                                 ;
+; table~152                               ; Lost fanout                                 ;
+; table~168                               ; Lost fanout                                 ;
+; table~144                               ; Lost fanout                                 ;
+; table~160                               ; Lost fanout                                 ;
+; table~192                               ; Lost fanout                                 ;
+; table~248                               ; Lost fanout                                 ;
+; table~264                               ; Lost fanout                                 ;
+; table~240                               ; Lost fanout                                 ;
+; table~216                               ; Lost fanout                                 ;
+; table~232                               ; Lost fanout                                 ;
+; table~208                               ; Lost fanout                                 ;
+; table~224                               ; Lost fanout                                 ;
+; table~256                               ; Lost fanout                                 ;
+; s_cmd_rst                               ; Stuck at VCC due to stuck port data_in      ;
+; s_cmd_en                                ; Stuck at VCC due to stuck port data_in      ;
+; cmd_addr[1..4]                          ; Stuck at GND due to stuck port clock_enable ;
+; command:cmd0|s_done                     ; Stuck at GND due to stuck port sclear       ;
+; command:cmd0|s_step[0..2]               ; Stuck at GND due to stuck port sclear       ;
+; command:cmd0|s_pwm                      ; Stuck at GND due to stuck port sclear       ;
+; command:cmd0|s_step[3..8]               ; Stuck at GND due to stuck port sclear       ;
+; command:cmd0|counter[0..16]             ; Stuck at GND due to stuck port sclear       ;
+; cmd_addr[0]                             ; Lost fanout                                 ;
+; Total Number of Removed Registers = 310 ;                                             ;
++-----------------------------------------+---------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                   ;
++---------------+---------------------------+---------------------------------------------------------------------------------------------------+
+; Register name ; Reason for Removal        ; Registers Removed due to This Register                                                            ;
++---------------+---------------------------+---------------------------------------------------------------------------------------------------+
+; present.START ; Stuck at GND              ; s_cmd_data[5], table~60, table~76, table~52, table~28, table~44, table~68, table~124, table~140,  ;
+;               ; due to stuck port data_in ; table~116, table~92, table~132, table~188, table~204, table~180, table~252, table~268, table~244, ;
+;               ;                           ; s_cmd_data[4], table~59, table~75, table~51, table~27, table~43, table~67, table~123, table~139,  ;
+;               ;                           ; table~115, table~91, table~131, table~187, table~203, table~179, table~251, table~267, table~243, ;
+;               ;                           ; command:cmd0|s_en_motA, command:cmd0|s_en_motB, s_cmd_data[3], table~58, table~74,                ;
+;               ;                           ; table~50, table~26, table~42, table~66, table~122, table~138, table~114, table~90, table~130,     ;
+;               ;                           ; table~186, table~202, table~178, table~250, table~266, table~242, s_cmd_data[2], table~57,        ;
+;               ;                           ; table~73, table~49, table~25, table~41, table~65, table~121, table~137, table~113, table~89,      ;
+;               ;                           ; table~129, table~185, table~201, table~177, table~249, table~265, table~241, s_cmd_data[0],       ;
+;               ;                           ; table~55, table~71, table~47, table~23, table~39, table~63, table~119, table~135, table~111,      ;
+;               ;                           ; table~87, table~127, table~183, table~199, table~175, table~247, table~263, table~239,            ;
+;               ;                           ; s_cmd_data[1], table~56, table~72, table~48, table~24, table~40, table~64, table~120, table~136,  ;
+;               ;                           ; table~112, table~88, table~128, table~184, table~200, table~176, table~248, table~264, table~240, ;
+;               ;                           ; s_cmd_rst, s_cmd_en, cmd_addr[4], command:cmd0|s_done, command:cmd0|s_step[1],                    ;
+;               ;                           ; command:cmd0|s_step[2], command:cmd0|s_step[0], command:cmd0|s_pwm,                               ;
+;               ;                           ; command:cmd0|s_step[4], command:cmd0|s_step[5], command:cmd0|s_step[3],                           ;
+;               ;                           ; command:cmd0|s_step[6], command:cmd0|s_step[7], command:cmd0|s_step[8],                           ;
+;               ;                           ; command:cmd0|counter[3], command:cmd0|counter[4], command:cmd0|counter[5],                        ;
+;               ;                           ; command:cmd0|counter[6], command:cmd0|counter[7], command:cmd0|counter[8],                        ;
+;               ;                           ; command:cmd0|counter[9], command:cmd0|counter[10], command:cmd0|counter[11],                      ;
+;               ;                           ; command:cmd0|counter[12], command:cmd0|counter[13], command:cmd0|counter[14],                     ;
+;               ;                           ; command:cmd0|counter[15], command:cmd0|counter[16], command:cmd0|counter[0],                      ;
+;               ;                           ; command:cmd0|counter[1], command:cmd0|counter[2], cmd_addr[0]                                     ;
++---------------+---------------------------+---------------------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 0     ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                        ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output              ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------+
+; 3:1                ; 9 bits    ; 18 LEs        ; 0 LEs                ; 18 LEs                 ; Yes        ; |controller_ip|command:cmd0|s_step[6]   ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |controller_ip|s_cmd_en                 ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |controller_ip|command:cmd0|s_en_motA   ;
+; 5:1                ; 17 bits   ; 51 LEs        ; 0 LEs                ; 51 LEs                 ; Yes        ; |controller_ip|command:cmd0|counter[12] ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------+
+
+
++-------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |controller_ip ;
++---------------------+-------+-------------------------------------------------+
+; Parameter Name      ; Value ; Type                                            ;
++---------------------+-------+-------------------------------------------------+
+; ADDR_WIDTH          ; 5     ; Signed Integer                                  ;
+; ARRAY_SIZE          ; 32    ; Signed Integer                                  ;
+; DATA_LENGTH         ; 8     ; Signed Integer                                  ;
+; EXERNAL_DATA_LENGTH ; 8     ; Signed Integer                                  ;
+; START_ADDR          ; 31    ; Signed Integer                                  ;
++---------------------+-------+-------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------+
+; Parameter Settings for User Entity Instance: command:cmd0 ;
++----------------+-------+----------------------------------+
+; Parameter Name ; Value ; Type                             ;
++----------------+-------+----------------------------------+
+; PWM_PERIOD     ; 70000 ; Signed Integer                   ;
+; PWM_CYCLE      ; 35000 ; Signed Integer                   ;
+; QUARTER        ; 200   ; Signed Integer                   ;
++----------------+-------+----------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_lcell_comb     ; 1                           ;
+;     normal            ; 1                           ;
+;         0 data inputs ; 1                           ;
+; boundary_port         ; 33                          ;
+;                       ;                             ;
+; Max LUT depth         ; 0.00                        ;
+; Average LUT depth     ; 0.00                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:00     ;
++----------------+--------------+
+
+
 +-------------------------------+
 ; Analysis & Synthesis Messages ;
 +-------------------------------+
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
-    Info: Processing started: Tue Mar 17 13:55:23 2026
+    Info: Processing started: Tue Mar 17 14:01:31 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off hps_dp_ram -c hps_dp_ram
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
-Warning (12019): Can't analyze file -- file ../../Projet/hps_dp_ram.vhd is missing
-Warning (12019): Can't analyze file -- file ../../Projet/command.vhd is missing
+Info (12021): Found 2 design units, including 1 entities, in source file /users/osmane/documents/github/projet-rubik-s-cube/code vhdl/controller_ip.vhd
+    Info (12022): Found design unit 1: controller_ip-ctrl File: C:/Users/Osmane/Documents/GitHub/Projet-Rubik-s-Cube/Code VHDL/controller_ip.vhd Line: 33
+    Info (12023): Found entity 1: controller_ip File: C:/Users/Osmane/Documents/GitHub/Projet-Rubik-s-Cube/Code VHDL/controller_ip.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file /users/osmane/documents/github/projet-rubik-s-cube/code vhdl/command.vhd
+    Info (12022): Found design unit 1: command-archCommand File: C:/Users/Osmane/Documents/GitHub/Projet-Rubik-s-Cube/Code VHDL/command.vhd Line: 31
+    Info (12023): Found entity 1: command File: C:/Users/Osmane/Documents/GitHub/Projet-Rubik-s-Cube/Code VHDL/command.vhd Line: 4
 Info (12021): Found 1 design units, including 1 entities, in source file de0_nano_soc_baseline.v
     Info (12023): Found entity 1: de0_nano_soc_baseline File: C:/Users/Osmane/Documents/GitHub/Projet-Rubik-s-Cube/Quartus/HPS_TEST/de0_nano_soc_baseline.v Line: 40
-Error (12007): Top-level design entity "hps_dp_ram" is undefined
-Error: Quartus Prime Analysis & Synthesis was unsuccessful. 1 error, 3 warnings
-    Error: Peak virtual memory: 4791 megabytes
-    Error: Processing ended: Tue Mar 17 13:55:29 2026
-    Error: Elapsed time: 00:00:06
-    Error: Total CPU time (on all processors): 00:00:15
+Info (12127): Elaborating entity "controller_ip" for the top level hierarchy
+Warning (10541): VHDL Signal Declaration warning at controller_ip.vhd(25): used implicit default value for signal "avs_s1_readdata" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/Osmane/Documents/GitHub/Projet-Rubik-s-Cube/Code VHDL/controller_ip.vhd Line: 25
+Warning (10036): Verilog HDL or VHDL warning at controller_ip.vhd(40): object "readdata" assigned a value but never read File: C:/Users/Osmane/Documents/GitHub/Projet-Rubik-s-Cube/Code VHDL/controller_ip.vhd Line: 40
+Info (12128): Elaborating entity "command" for hierarchy "command:cmd0" File: C:/Users/Osmane/Documents/GitHub/Projet-Rubik-s-Cube/Code VHDL/controller_ip.vhd Line: 70
+Info (276014): Found 1 instances of uninferred RAM logic
+    Info (276007): RAM logic "table" is uninferred due to asynchronous read logic File: C:/Users/Osmane/Documents/GitHub/Projet-Rubik-s-Cube/Code VHDL/controller_ip.vhd Line: 35
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "avs_s1_readdata[0]" is stuck at GND File: C:/Users/Osmane/Documents/GitHub/Projet-Rubik-s-Cube/Code VHDL/controller_ip.vhd Line: 25
+    Warning (13410): Pin "avs_s1_readdata[1]" is stuck at GND File: C:/Users/Osmane/Documents/GitHub/Projet-Rubik-s-Cube/Code VHDL/controller_ip.vhd Line: 25
+    Warning (13410): Pin "avs_s1_readdata[2]" is stuck at GND File: C:/Users/Osmane/Documents/GitHub/Projet-Rubik-s-Cube/Code VHDL/controller_ip.vhd Line: 25
+    Warning (13410): Pin "avs_s1_readdata[3]" is stuck at GND File: C:/Users/Osmane/Documents/GitHub/Projet-Rubik-s-Cube/Code VHDL/controller_ip.vhd Line: 25
+    Warning (13410): Pin "avs_s1_readdata[4]" is stuck at GND File: C:/Users/Osmane/Documents/GitHub/Projet-Rubik-s-Cube/Code VHDL/controller_ip.vhd Line: 25
+    Warning (13410): Pin "avs_s1_readdata[5]" is stuck at GND File: C:/Users/Osmane/Documents/GitHub/Projet-Rubik-s-Cube/Code VHDL/controller_ip.vhd Line: 25
+    Warning (13410): Pin "avs_s1_readdata[6]" is stuck at GND File: C:/Users/Osmane/Documents/GitHub/Projet-Rubik-s-Cube/Code VHDL/controller_ip.vhd Line: 25
+    Warning (13410): Pin "avs_s1_readdata[7]" is stuck at GND File: C:/Users/Osmane/Documents/GitHub/Projet-Rubik-s-Cube/Code VHDL/controller_ip.vhd Line: 25
+    Warning (13410): Pin "pio_out[0]" is stuck at GND File: C:/Users/Osmane/Documents/GitHub/Projet-Rubik-s-Cube/Code VHDL/controller_ip.vhd Line: 28
+    Warning (13410): Pin "pio_out[1]" is stuck at GND File: C:/Users/Osmane/Documents/GitHub/Projet-Rubik-s-Cube/Code VHDL/controller_ip.vhd Line: 28
+    Warning (13410): Pin "pio_out[2]" is stuck at GND File: C:/Users/Osmane/Documents/GitHub/Projet-Rubik-s-Cube/Code VHDL/controller_ip.vhd Line: 28
+    Warning (13410): Pin "pio_out[3]" is stuck at GND File: C:/Users/Osmane/Documents/GitHub/Projet-Rubik-s-Cube/Code VHDL/controller_ip.vhd Line: 28
+    Warning (13410): Pin "pio_out[4]" is stuck at GND File: C:/Users/Osmane/Documents/GitHub/Projet-Rubik-s-Cube/Code VHDL/controller_ip.vhd Line: 28
+    Warning (13410): Pin "pio_out[5]" is stuck at GND File: C:/Users/Osmane/Documents/GitHub/Projet-Rubik-s-Cube/Code VHDL/controller_ip.vhd Line: 28
+    Warning (13410): Pin "pio_out[6]" is stuck at GND File: C:/Users/Osmane/Documents/GitHub/Projet-Rubik-s-Cube/Code VHDL/controller_ip.vhd Line: 28
+    Warning (13410): Pin "pio_out[7]" is stuck at GND File: C:/Users/Osmane/Documents/GitHub/Projet-Rubik-s-Cube/Code VHDL/controller_ip.vhd Line: 28
+Info (17049): 269 registers lost all their fanouts during netlist optimizations.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 17 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "avs_s1_writedata[6]" File: C:/Users/Osmane/Documents/GitHub/Projet-Rubik-s-Cube/Code VHDL/controller_ip.vhd Line: 22
+    Warning (15610): No output dependent on input pin "avs_s1_writedata[7]" File: C:/Users/Osmane/Documents/GitHub/Projet-Rubik-s-Cube/Code VHDL/controller_ip.vhd Line: 22
+    Warning (15610): No output dependent on input pin "avs_s1_clk" File: C:/Users/Osmane/Documents/GitHub/Projet-Rubik-s-Cube/Code VHDL/controller_ip.vhd Line: 16
+    Warning (15610): No output dependent on input pin "avs_s1_reset" File: C:/Users/Osmane/Documents/GitHub/Projet-Rubik-s-Cube/Code VHDL/controller_ip.vhd Line: 17
+    Warning (15610): No output dependent on input pin "avs_s1_read" File: C:/Users/Osmane/Documents/GitHub/Projet-Rubik-s-Cube/Code VHDL/controller_ip.vhd Line: 24
+    Warning (15610): No output dependent on input pin "avs_s1_address[0]" File: C:/Users/Osmane/Documents/GitHub/Projet-Rubik-s-Cube/Code VHDL/controller_ip.vhd Line: 19
+    Warning (15610): No output dependent on input pin "avs_s1_address[1]" File: C:/Users/Osmane/Documents/GitHub/Projet-Rubik-s-Cube/Code VHDL/controller_ip.vhd Line: 19
+    Warning (15610): No output dependent on input pin "avs_s1_address[2]" File: C:/Users/Osmane/Documents/GitHub/Projet-Rubik-s-Cube/Code VHDL/controller_ip.vhd Line: 19
+    Warning (15610): No output dependent on input pin "avs_s1_address[3]" File: C:/Users/Osmane/Documents/GitHub/Projet-Rubik-s-Cube/Code VHDL/controller_ip.vhd Line: 19
+    Warning (15610): No output dependent on input pin "avs_s1_address[4]" File: C:/Users/Osmane/Documents/GitHub/Projet-Rubik-s-Cube/Code VHDL/controller_ip.vhd Line: 19
+    Warning (15610): No output dependent on input pin "avs_s1_write" File: C:/Users/Osmane/Documents/GitHub/Projet-Rubik-s-Cube/Code VHDL/controller_ip.vhd Line: 21
+    Warning (15610): No output dependent on input pin "avs_s1_writedata[5]" File: C:/Users/Osmane/Documents/GitHub/Projet-Rubik-s-Cube/Code VHDL/controller_ip.vhd Line: 22
+    Warning (15610): No output dependent on input pin "avs_s1_writedata[4]" File: C:/Users/Osmane/Documents/GitHub/Projet-Rubik-s-Cube/Code VHDL/controller_ip.vhd Line: 22
+    Warning (15610): No output dependent on input pin "avs_s1_writedata[3]" File: C:/Users/Osmane/Documents/GitHub/Projet-Rubik-s-Cube/Code VHDL/controller_ip.vhd Line: 22
+    Warning (15610): No output dependent on input pin "avs_s1_writedata[2]" File: C:/Users/Osmane/Documents/GitHub/Projet-Rubik-s-Cube/Code VHDL/controller_ip.vhd Line: 22
+    Warning (15610): No output dependent on input pin "avs_s1_writedata[0]" File: C:/Users/Osmane/Documents/GitHub/Projet-Rubik-s-Cube/Code VHDL/controller_ip.vhd Line: 22
+    Warning (15610): No output dependent on input pin "avs_s1_writedata[1]" File: C:/Users/Osmane/Documents/GitHub/Projet-Rubik-s-Cube/Code VHDL/controller_ip.vhd Line: 22
+Info (21057): Implemented 33 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 17 input pins
+    Info (21059): Implemented 16 output pins
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 38 warnings
+    Info: Peak virtual memory: 4901 megabytes
+    Info: Processing ended: Tue Mar 17 14:01:39 2026
+    Info: Elapsed time: 00:00:08
+    Info: Total CPU time (on all processors): 00:00:16
 
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="osmanip_hps" kind="system" version="24.1" fabric="QSYS">
  <!-- Format version 24.1 1077 (Future versions may contain additional information.) -->
- <!-- 2026.03.17.13:51:29 -->
+ <!-- 2026.03.17.15:06:03 -->
  <!-- A collection of modules and connections -->
  <parameter name="clockCrossingAdapter">
   <type>com.altera.sopcmodel.ensemble.EClockAdapter</type>
@@ -53,7 +53,7 @@
  </parameter>
  <parameter name="generationId">
   <type>int</type>
-  <value>1773751849</value>
+  <value>1773756318</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>true</visible>
@@ -44958,5 +44958,5 @@ parameters are a RESULT of the module parameters. -->
   <version>24.1</version>
  </plugin>
  <reportVersion>24.1 1077</reportVersion>
- <uniqueIdentifier>60CF8471CDD70000019CFBD96D9B</uniqueIdentifier>
+ <uniqueIdentifier>60CF8471CDD70000019CFC1DA190</uniqueIdentifier>
 </EnsembleReport>
