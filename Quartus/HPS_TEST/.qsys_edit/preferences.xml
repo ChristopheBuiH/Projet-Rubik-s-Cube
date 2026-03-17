@@ -5,11 +5,11 @@
   <columns>
    <connections preferredWidth="95" />
    <irq preferredWidth="34" />
-   <export preferredWidth="235" />
-   <description preferredWidth="214" />
+   <export preferredWidth="214" />
+   <description preferredWidth="238" />
   </columns>
  </systemtable>
- <library expandedCategories="Library,Project" />
- <window width="1436" height="775" x="416" y="114" />
+ <library expandedCategories="Project,Library" />
+ <window width="1788" height="839" x="64" y="114" />
  <generation synthesis="VHDL" />
 </preferences>
