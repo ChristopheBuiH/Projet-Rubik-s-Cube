@@ -44,7 +44,7 @@
 
 module osmanip_hps_mm_interconnect_0_router_default_decode
   #(
-     parameter DEFAULT_CHANNEL = 1,
+     parameter DEFAULT_CHANNEL = 0,
                DEFAULT_WR_CHANNEL = -1,
                DEFAULT_RD_CHANNEL = -1,
                DEFAULT_DESTID = 1 
@@ -191,13 +191,13 @@ module osmanip_hps_mm_interconnect_0_router
 
     // ( 0x0 .. 0x1000 )
     if ( {address[RG:PAD0],{PAD0{1'b0}}} == 13'h0   ) begin
-            src_channel = 2'b10;
+            src_channel = 2'b01;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 1;
     end
 
     // ( 0x1000 .. 0x1020 )
     if ( {address[RG:PAD1],{PAD1{1'b0}}} == 13'h1000   ) begin
-            src_channel = 2'b01;
+            src_channel = 2'b10;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 0;
     end
 

@@ -90,22 +90,22 @@ avs_s1_writedata[7] => table.DATAIN7
 avs_s1_read => present.OUTPUTSELECT
 avs_s1_read => present.OUTPUTSELECT
 avs_s1_read => present.OUTPUTSELECT
-avs_s1_readdata[0] <= comb.DB_MAX_OUTPUT_PORT_TYPE
-avs_s1_readdata[1] <= avs_s1_readdata[1].DB_MAX_OUTPUT_PORT_TYPE
-avs_s1_readdata[2] <= avs_s1_readdata[2].DB_MAX_OUTPUT_PORT_TYPE
-avs_s1_readdata[3] <= avs_s1_readdata[3].DB_MAX_OUTPUT_PORT_TYPE
-avs_s1_readdata[4] <= avs_s1_readdata[4].DB_MAX_OUTPUT_PORT_TYPE
-avs_s1_readdata[5] <= avs_s1_readdata[5].DB_MAX_OUTPUT_PORT_TYPE
-avs_s1_readdata[6] <= avs_s1_readdata[6].DB_MAX_OUTPUT_PORT_TYPE
-avs_s1_readdata[7] <= avs_s1_readdata[7].DB_MAX_OUTPUT_PORT_TYPE
-pio_out[0] <= command:cmd0.o_mXa
-pio_out[1] <= command:cmd0.o_mXb
-pio_out[2] <= command:cmd0.o_mYa
-pio_out[3] <= command:cmd0.o_mYb
-pio_out[4] <= command:cmd0.o_mZa
-pio_out[5] <= command:cmd0.o_mZb
-pio_out[6] <= command:cmd0.o_dirA
-pio_out[7] <= command:cmd0.o_dirB
+avs_s1_readdata[0] << comb.DB_MAX_OUTPUT_PORT_TYPE
+avs_s1_readdata[1] << avs_s1_readdata[1].DB_MAX_OUTPUT_PORT_TYPE
+avs_s1_readdata[2] << avs_s1_readdata[2].DB_MAX_OUTPUT_PORT_TYPE
+avs_s1_readdata[3] << avs_s1_readdata[3].DB_MAX_OUTPUT_PORT_TYPE
+avs_s1_readdata[4] << avs_s1_readdata[4].DB_MAX_OUTPUT_PORT_TYPE
+avs_s1_readdata[5] << avs_s1_readdata[5].DB_MAX_OUTPUT_PORT_TYPE
+avs_s1_readdata[6] << avs_s1_readdata[6].DB_MAX_OUTPUT_PORT_TYPE
+avs_s1_readdata[7] << avs_s1_readdata[7].DB_MAX_OUTPUT_PORT_TYPE
+pio_out[0] << command:cmd0.o_mXa
+pio_out[1] << command:cmd0.o_mXb
+pio_out[2] << command:cmd0.o_mYa
+pio_out[3] << command:cmd0.o_mYb
+pio_out[4] << command:cmd0.o_mZa
+pio_out[5] << command:cmd0.o_mZb
+pio_out[6] << command:cmd0.o_dirA
+pio_out[7] << command:cmd0.o_dirB
 
 
 |controller_ip|command:cmd0

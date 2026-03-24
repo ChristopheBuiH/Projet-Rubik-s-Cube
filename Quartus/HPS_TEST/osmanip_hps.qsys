@@ -88,11 +88,6 @@
  <instanceScript></instanceScript>
  <interface name="clk" internal="clk_0.clk_in" type="clock" dir="end" />
  <interface name="memory" internal="hps_0.memory" type="conduit" dir="end" />
- <interface
-   name="motor_control_external_connection"
-   internal="Osmanip_0.external_connection"
-   type="conduit"
-   dir="end" />
  <module name="Osmanip_0" kind="Osmanip" version="2.0" enabled="1">
   <parameter name="ADDR_WIDTH" value="5" />
   <parameter name="ARRAY_SIZE" value="32" />
@@ -672,18 +667,18 @@
    kind="avalon"
    version="24.1"
    start="hps_0.h2f_lw_axi_master"
-   end="Osmanip_0.s1">
+   end="onchip_memory2_0.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x1000" />
+  <parameter name="baseAddress" value="0x0000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
    kind="avalon"
    version="24.1"
    start="hps_0.h2f_lw_axi_master"
-   end="onchip_memory2_0.s1">
+   end="Osmanip_0.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0000" />
+  <parameter name="baseAddress" value="0x1000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
