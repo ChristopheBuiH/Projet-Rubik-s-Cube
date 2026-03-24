@@ -8,24 +8,23 @@ use IEEE.numeric_std.all;
 
 entity osmanip_hps is
 	port (
-		clk_clk                                  : in    std_logic                     := '0';             --                               clk.clk
-		memory_mem_a                             : out   std_logic_vector(12 downto 0);                    --                            memory.mem_a
-		memory_mem_ba                            : out   std_logic_vector(2 downto 0);                     --                                  .mem_ba
-		memory_mem_ck                            : out   std_logic;                                        --                                  .mem_ck
-		memory_mem_ck_n                          : out   std_logic;                                        --                                  .mem_ck_n
-		memory_mem_cke                           : out   std_logic;                                        --                                  .mem_cke
-		memory_mem_cs_n                          : out   std_logic;                                        --                                  .mem_cs_n
-		memory_mem_ras_n                         : out   std_logic;                                        --                                  .mem_ras_n
-		memory_mem_cas_n                         : out   std_logic;                                        --                                  .mem_cas_n
-		memory_mem_we_n                          : out   std_logic;                                        --                                  .mem_we_n
-		memory_mem_reset_n                       : out   std_logic;                                        --                                  .mem_reset_n
-		memory_mem_dq                            : inout std_logic_vector(7 downto 0)  := (others => '0'); --                                  .mem_dq
-		memory_mem_dqs                           : inout std_logic                     := '0';             --                                  .mem_dqs
-		memory_mem_dqs_n                         : inout std_logic                     := '0';             --                                  .mem_dqs_n
-		memory_mem_odt                           : out   std_logic;                                        --                                  .mem_odt
-		memory_mem_dm                            : out   std_logic;                                        --                                  .mem_dm
-		memory_oct_rzqin                         : in    std_logic                     := '0';             --                                  .oct_rzqin
-		motor_control_external_connection_export : out   std_logic_vector(7 downto 0)                      -- motor_control_external_connection.export
+		clk_clk            : in    std_logic                     := '0';             --    clk.clk
+		memory_mem_a       : out   std_logic_vector(12 downto 0);                    -- memory.mem_a
+		memory_mem_ba      : out   std_logic_vector(2 downto 0);                     --       .mem_ba
+		memory_mem_ck      : out   std_logic;                                        --       .mem_ck
+		memory_mem_ck_n    : out   std_logic;                                        --       .mem_ck_n
+		memory_mem_cke     : out   std_logic;                                        --       .mem_cke
+		memory_mem_cs_n    : out   std_logic;                                        --       .mem_cs_n
+		memory_mem_ras_n   : out   std_logic;                                        --       .mem_ras_n
+		memory_mem_cas_n   : out   std_logic;                                        --       .mem_cas_n
+		memory_mem_we_n    : out   std_logic;                                        --       .mem_we_n
+		memory_mem_reset_n : out   std_logic;                                        --       .mem_reset_n
+		memory_mem_dq      : inout std_logic_vector(7 downto 0)  := (others => '0'); --       .mem_dq
+		memory_mem_dqs     : inout std_logic                     := '0';             --       .mem_dqs
+		memory_mem_dqs_n   : inout std_logic                     := '0';             --       .mem_dqs_n
+		memory_mem_odt     : out   std_logic;                                        --       .mem_odt
+		memory_mem_dm      : out   std_logic;                                        --       .mem_dm
+		memory_oct_rzqin   : in    std_logic                     := '0'              --       .oct_rzqin
 	);
 end entity osmanip_hps;
 
@@ -208,7 +207,7 @@ architecture rtl of osmanip_hps is
 			hps_0_h2f_lw_axi_master_rready                                      : in  std_logic                     := 'X';             -- rready
 			clk_0_clk_clk                                                       : in  std_logic                     := 'X';             -- clk
 			hps_0_h2f_lw_axi_master_agent_clk_reset_reset_bridge_in_reset_reset : in  std_logic                     := 'X';             -- reset
-			Osmanip_0_reset_sink_reset_bridge_in_reset_reset                    : in  std_logic                     := 'X';             -- reset
+			onchip_memory2_0_reset1_reset_bridge_in_reset_reset                 : in  std_logic                     := 'X';             -- reset
 			onchip_memory2_0_s1_address                                         : out std_logic_vector(9 downto 0);                     -- address
 			onchip_memory2_0_s1_write                                           : out std_logic;                                        -- write
 			onchip_memory2_0_s1_readdata                                        : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
@@ -393,11 +392,6 @@ architecture rtl of osmanip_hps is
 	signal hps_0_h2f_lw_axi_master_awsize                   : std_logic_vector(2 downto 0);  -- hps_0:h2f_lw_AWSIZE -> mm_interconnect_0:hps_0_h2f_lw_axi_master_awsize
 	signal hps_0_h2f_lw_axi_master_awvalid                  : std_logic;                     -- hps_0:h2f_lw_AWVALID -> mm_interconnect_0:hps_0_h2f_lw_axi_master_awvalid
 	signal hps_0_h2f_lw_axi_master_rvalid                   : std_logic;                     -- mm_interconnect_0:hps_0_h2f_lw_axi_master_rvalid -> hps_0:h2f_lw_RVALID
-	signal mm_interconnect_0_osmanip_0_s1_readdata          : std_logic_vector(7 downto 0);  -- Osmanip_0:avs_s1_readdata -> mm_interconnect_0:Osmanip_0_s1_readdata
-	signal mm_interconnect_0_osmanip_0_s1_address           : std_logic_vector(4 downto 0);  -- mm_interconnect_0:Osmanip_0_s1_address -> Osmanip_0:avs_s1_address
-	signal mm_interconnect_0_osmanip_0_s1_read              : std_logic;                     -- mm_interconnect_0:Osmanip_0_s1_read -> Osmanip_0:avs_s1_read
-	signal mm_interconnect_0_osmanip_0_s1_write             : std_logic;                     -- mm_interconnect_0:Osmanip_0_s1_write -> Osmanip_0:avs_s1_write
-	signal mm_interconnect_0_osmanip_0_s1_writedata         : std_logic_vector(7 downto 0);  -- mm_interconnect_0:Osmanip_0_s1_writedata -> Osmanip_0:avs_s1_writedata
 	signal mm_interconnect_0_onchip_memory2_0_s1_chipselect : std_logic;                     -- mm_interconnect_0:onchip_memory2_0_s1_chipselect -> onchip_memory2_0:chipselect
 	signal mm_interconnect_0_onchip_memory2_0_s1_readdata   : std_logic_vector(31 downto 0); -- onchip_memory2_0:readdata -> mm_interconnect_0:onchip_memory2_0_s1_readdata
 	signal mm_interconnect_0_onchip_memory2_0_s1_address    : std_logic_vector(9 downto 0);  -- mm_interconnect_0:onchip_memory2_0_s1_address -> onchip_memory2_0:address
@@ -405,7 +399,12 @@ architecture rtl of osmanip_hps is
 	signal mm_interconnect_0_onchip_memory2_0_s1_write      : std_logic;                     -- mm_interconnect_0:onchip_memory2_0_s1_write -> onchip_memory2_0:write
 	signal mm_interconnect_0_onchip_memory2_0_s1_writedata  : std_logic_vector(31 downto 0); -- mm_interconnect_0:onchip_memory2_0_s1_writedata -> onchip_memory2_0:writedata
 	signal mm_interconnect_0_onchip_memory2_0_s1_clken      : std_logic;                     -- mm_interconnect_0:onchip_memory2_0_s1_clken -> onchip_memory2_0:clken
-	signal rst_controller_reset_out_reset                   : std_logic;                     -- rst_controller:reset_out -> [Osmanip_0:avs_s1_reset, mm_interconnect_0:Osmanip_0_reset_sink_reset_bridge_in_reset_reset, onchip_memory2_0:reset]
+	signal mm_interconnect_0_osmanip_0_s1_readdata          : std_logic_vector(7 downto 0);  -- Osmanip_0:avs_s1_readdata -> mm_interconnect_0:Osmanip_0_s1_readdata
+	signal mm_interconnect_0_osmanip_0_s1_address           : std_logic_vector(4 downto 0);  -- mm_interconnect_0:Osmanip_0_s1_address -> Osmanip_0:avs_s1_address
+	signal mm_interconnect_0_osmanip_0_s1_read              : std_logic;                     -- mm_interconnect_0:Osmanip_0_s1_read -> Osmanip_0:avs_s1_read
+	signal mm_interconnect_0_osmanip_0_s1_write             : std_logic;                     -- mm_interconnect_0:Osmanip_0_s1_write -> Osmanip_0:avs_s1_write
+	signal mm_interconnect_0_osmanip_0_s1_writedata         : std_logic_vector(7 downto 0);  -- mm_interconnect_0:Osmanip_0_s1_writedata -> Osmanip_0:avs_s1_writedata
+	signal rst_controller_reset_out_reset                   : std_logic;                     -- rst_controller:reset_out -> [Osmanip_0:avs_s1_reset, mm_interconnect_0:onchip_memory2_0_reset1_reset_bridge_in_reset_reset, onchip_memory2_0:reset]
 	signal rst_controller_reset_out_reset_req               : std_logic;                     -- rst_controller:reset_req -> [onchip_memory2_0:reset_req, rst_translator:reset_req_in]
 	signal rst_controller_001_reset_out_reset               : std_logic;                     -- rst_controller_001:reset_out -> mm_interconnect_0:hps_0_h2f_lw_axi_master_agent_clk_reset_reset_bridge_in_reset_reset
 	signal hps_0_h2f_reset_reset_ports_inv                  : std_logic;                     -- hps_0_h2f_reset_reset:inv -> [rst_controller:reset_in0, rst_controller:reset_in1, rst_controller_001:reset_in0]
@@ -427,7 +426,7 @@ begin
 			avs_s1_read      => mm_interconnect_0_osmanip_0_s1_read,      --                    .read
 			avs_s1_readdata  => mm_interconnect_0_osmanip_0_s1_readdata,  --                    .readdata
 			avs_s1_clk       => clk_clk,                                  --          clock_sink.clk
-			pio_out          => motor_control_external_connection_export, -- external_connection.export
+			pio_out          => open,                                     -- external_connection.export
 			avs_s1_reset     => rst_controller_reset_out_reset            --          reset_sink.reset
 		);
 
@@ -587,7 +586,7 @@ begin
 			hps_0_h2f_lw_axi_master_rready                                      => hps_0_h2f_lw_axi_master_rready,                   --                                                              .rready
 			clk_0_clk_clk                                                       => clk_clk,                                          --                                                     clk_0_clk.clk
 			hps_0_h2f_lw_axi_master_agent_clk_reset_reset_bridge_in_reset_reset => rst_controller_001_reset_out_reset,               -- hps_0_h2f_lw_axi_master_agent_clk_reset_reset_bridge_in_reset.reset
-			Osmanip_0_reset_sink_reset_bridge_in_reset_reset                    => rst_controller_reset_out_reset,                   --                    Osmanip_0_reset_sink_reset_bridge_in_reset.reset
+			onchip_memory2_0_reset1_reset_bridge_in_reset_reset                 => rst_controller_reset_out_reset,                   --                 onchip_memory2_0_reset1_reset_bridge_in_reset.reset
 			onchip_memory2_0_s1_address                                         => mm_interconnect_0_onchip_memory2_0_s1_address,    --                                           onchip_memory2_0_s1.address
 			onchip_memory2_0_s1_write                                           => mm_interconnect_0_onchip_memory2_0_s1_write,      --                                                              .write
 			onchip_memory2_0_s1_readdata                                        => mm_interconnect_0_onchip_memory2_0_s1_readdata,   --                                                              .readdata

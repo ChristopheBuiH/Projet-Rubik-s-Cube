@@ -16,8 +16,7 @@ module osmanip_hps (
 	memory_mem_dqs_n,
 	memory_mem_odt,
 	memory_mem_dm,
-	memory_oct_rzqin,
-	motor_control_external_connection_export);	
+	memory_oct_rzqin);	
 
 	input		clk_clk;
 	output	[12:0]	memory_mem_a;
@@ -36,5 +35,4 @@ module osmanip_hps (
 	output		memory_mem_odt;
 	output		memory_mem_dm;
 	input		memory_oct_rzqin;
-	output	[7:0]	motor_control_external_connection_export;
 endmodule

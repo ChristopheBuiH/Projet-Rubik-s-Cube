@@ -1,5 +1,5 @@
 Flow report for hps_dp_ram
-Tue Mar 17 14:02:22 2026
+Tue Mar 24 14:24:54 2026
 Quartus Prime Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
 
 
@@ -41,7 +41,7 @@ on the Quartus Prime software download page.
 +-----------------------------------------------------------------------------------+
 ; Flow Summary                                                                      ;
 +---------------------------------+-------------------------------------------------+
-; Flow Status                     ; Successful - Tue Mar 17 14:02:22 2026           ;
+; Flow Status                     ; Successful - Tue Mar 24 14:24:54 2026           ;
 ; Quartus Prime Version           ; 24.1std.0 Build 1077 03/04/2025 SC Lite Edition ;
 ; Revision Name                   ; hps_dp_ram                                      ;
 ; Top-level Entity Name           ; controller_ip                                   ;
@@ -68,7 +68,7 @@ on the Quartus Prime software download page.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 03/17/2026 14:01:31 ;
+; Start date & time ; 03/24/2026 14:24:04 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; hps_dp_ram          ;
 +-------------------+---------------------+
@@ -79,7 +79,7 @@ on the Quartus Prime software download page.
 +-------------------------------------+----------------------------------------+---------------+---------------+-----------------------------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name   ; Section Id                        ;
 +-------------------------------------+----------------------------------------+---------------+---------------+-----------------------------------+
-; COMPILER_SIGNATURE_ID               ; 10995770589203.177375249127996         ; --            ; --            ; --                                ;
+; COMPILER_SIGNATURE_ID               ; 10995770589205.177435864436416         ; --            ; --            ; --                                ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --            ; eda_board_design_timing           ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --            ; eda_board_design_boundary_scan    ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --            ; eda_board_design_signal_integrity ;
@@ -104,12 +104,12 @@ on the Quartus Prime software download page.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:08     ; 1.0                     ; 4889 MB             ; 00:00:16                           ;
-; Fitter               ; 00:00:29     ; 1.0                     ; 7593 MB             ; 00:02:22                           ;
-; Assembler            ; 00:00:07     ; 1.0                     ; 4988 MB             ; 00:00:03                           ;
-; Timing Analyzer      ; 00:00:04     ; 1.1                     ; 5335 MB             ; 00:00:03                           ;
-; EDA Netlist Writer   ; 00:00:00     ; 1.0                     ; 4756 MB             ; 00:00:01                           ;
-; Total                ; 00:00:48     ; --                      ; --                  ; 00:02:45                           ;
+; Analysis & Synthesis ; 00:00:08     ; 1.0                     ; 4888 MB             ; 00:00:17                           ;
+; Fitter               ; 00:00:27     ; 1.0                     ; 7593 MB             ; 00:02:22                           ;
+; Assembler            ; 00:00:07     ; 1.0                     ; 4987 MB             ; 00:00:03                           ;
+; Timing Analyzer      ; 00:00:04     ; 1.0                     ; 5336 MB             ; 00:00:03                           ;
+; EDA Netlist Writer   ; 00:00:01     ; 1.0                     ; 4755 MB             ; 00:00:01                           ;
+; Total                ; 00:00:47     ; --                      ; --                  ; 00:02:46                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

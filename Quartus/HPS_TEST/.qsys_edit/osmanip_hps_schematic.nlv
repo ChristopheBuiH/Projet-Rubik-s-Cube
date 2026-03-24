@@ -5,8 +5,8 @@ preplace inst osmanip_hps.hps_0.spim1 -pg 1
 preplace inst osmanip_hps.hps_0.timer2 -pg 1
 preplace inst osmanip_hps.hps_0.uart1 -pg 1
 preplace inst osmanip_hps.hps_0.bridges -pg 1
-preplace inst osmanip_hps.clk_0 -pg 1 -lvl 1 -y 40
-preplace inst osmanip_hps.Osmanip_0 -pg 1 -lvl 3 -y 170
+preplace inst osmanip_hps.clk_0 -pg 1 -lvl 1 -y 60
+preplace inst osmanip_hps.Osmanip_0 -pg 1 -lvl 3 -y 190
 preplace inst osmanip_hps.hps_0.gmac1 -pg 1
 preplace inst osmanip_hps.hps_0.sdmmc -pg 1
 preplace inst osmanip_hps.hps_0.timer3 -pg 1
@@ -43,11 +43,11 @@ preplace inst osmanip_hps.hps_0.gpio0 -pg 1
 preplace inst osmanip_hps.hps_0.rstmgr -pg 1
 preplace inst osmanip_hps.hps_0.gpio1 -pg 1
 preplace inst osmanip_hps.hps_0.hps_io -pg 1
-preplace inst osmanip_hps.hps_0 -pg 1 -lvl 2 -y 70
+preplace inst osmanip_hps.hps_0 -pg 1 -lvl 2 -y 90
 preplace inst osmanip_hps.hps_0.qspi -pg 1
 preplace inst osmanip_hps.hps_0.gpio2 -pg 1
 preplace inst osmanip_hps.hps_0.timer0 -pg 1
-preplace inst osmanip_hps.onchip_memory2_0 -pg 1 -lvl 3 -y 90
+preplace inst osmanip_hps.onchip_memory2_0 -pg 1 -lvl 3 -y 110
 preplace inst osmanip_hps.hps_0.timer -pg 1
 preplace inst osmanip_hps.hps_0.l3regs -pg 1
 preplace inst osmanip_hps.hps_0.spim0 -pg 1
@@ -55,11 +55,10 @@ preplace inst osmanip_hps.hps_0.timer1 -pg 1
 preplace inst osmanip_hps.hps_0.uart0 -pg 1
 preplace inst osmanip_hps.hps_0.L2 -pg 1
 preplace inst osmanip_hps.hps_0.fpga_interfaces -pg 1
-preplace netloc INTERCONNECT<net_container>osmanip_hps</net_container>(MASTER)clk_0.clk_reset,(SLAVE)onchip_memory2_0.reset1,(SLAVE)clk_0.clk_in_reset,(SLAVE)Osmanip_0.reset_sink,(MASTER)hps_0.h2f_reset) 1 0 3 230 30 430 30 840
-preplace netloc EXPORT<net_container>osmanip_hps</net_container>(SLAVE)hps_0.memory,(SLAVE)osmanip_hps.memory) 1 0 2 NJ 140 NJ
+preplace netloc INTERCONNECT<net_container>osmanip_hps</net_container>(SLAVE)clk_0.clk_in_reset,(SLAVE)Osmanip_0.reset_sink,(SLAVE)onchip_memory2_0.reset1,(MASTER)clk_0.clk_reset,(MASTER)hps_0.h2f_reset) 1 0 3 80 130 280 210 650
+preplace netloc EXPORT<net_container>osmanip_hps</net_container>(SLAVE)hps_0.memory,(SLAVE)osmanip_hps.memory) 1 0 2 NJ 160 NJ
+preplace netloc FAN_OUT<net_container>osmanip_hps</net_container>(MASTER)clk_0.clk,(SLAVE)hps_0.f2h_axi_clock,(SLAVE)onchip_memory2_0.clk1,(SLAVE)Osmanip_0.clock_sink,(SLAVE)hps_0.h2f_lw_axi_clock) 1 1 2 300 30 670
+preplace netloc FAN_OUT<net_container>osmanip_hps</net_container>(MASTER)hps_0.h2f_lw_axi_master,(SLAVE)Osmanip_0.s1,(SLAVE)onchip_memory2_0.s1) 1 2 1 630
 preplace netloc EXPORT<net_container>osmanip_hps</net_container>(SLAVE)clk_0.clk_in,(SLAVE)osmanip_hps.clk) 1 0 1 NJ
-preplace netloc FAN_OUT<net_container>osmanip_hps</net_container>(SLAVE)onchip_memory2_0.s1,(MASTER)hps_0.h2f_lw_axi_master,(SLAVE)Osmanip_0.s1) 1 2 1 780
-preplace netloc FAN_OUT<net_container>osmanip_hps</net_container>(SLAVE)Osmanip_0.clock_sink,(SLAVE)hps_0.f2h_axi_clock,(SLAVE)onchip_memory2_0.clk1,(MASTER)clk_0.clk,(SLAVE)hps_0.h2f_lw_axi_clock) 1 1 2 450 190 800
-preplace netloc EXPORT<net_container>osmanip_hps</net_container>(SLAVE)osmanip_hps.motor_control_external_connection,(SLAVE)Osmanip_0.external_connection) 1 0 3 NJ 210 NJ 210 NJ
-levelinfo -pg 1 0 200 1050
-levelinfo -hier osmanip_hps 210 260 590 890 1040
+levelinfo -pg 1 0 50 900
+levelinfo -hier osmanip_hps 60 110 440 740 890
