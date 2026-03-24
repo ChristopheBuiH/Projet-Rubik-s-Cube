@@ -6,4 +6,4 @@
 
 
 int Recuperateur(const char *chemin, char *buffer, size_t bufferSize);
-uint8_t convertisseur32bits(const char *binaire);
+uint32_t convertisseur32bits(const char *binaire);
