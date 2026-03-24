@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdint.h>
 
-#define IP_OFFSET 0x00011000
+#define IP_OFFSET 0x00001000
 
 
 int Recuperateur(const char *chemin, char *buffer, size_t bufferSize);

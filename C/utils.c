@@ -4,12 +4,15 @@
 #include <stdint.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include <time.h>
 #include <sys/mman.h>
+#include <stdbool.h>
+
 #include "utils.h"
 
 // Adresse de base du pont Lightweight HPS-to-FPGA 
 #define LWHPS2FPGA_BASE 0xFF200000 
-// Taille de la plage mémoire à mapper (souvent 2 Mo pour le LWHPS2FPGA)
+// Taille de la plage mémoire à mapper
 #define LWHPS2FPGA_SPAN 0x00200000
 // Offset de l'IP dans la mémoire
 #define IP_OFFSET 0x00001000
@@ -79,22 +82,24 @@ int main() {
     separateur("010001010100011011010001", resultat);
 
 
-    // --- 2. ACCÈS MÉMOIRE FPGA ---
+    //Mon mémoire
     int fd;
     void *virtual_base;
     volatile uint32_t *reg_fpga;
 
     
 
-    printf("\nOuverture de la mémoire physique...\n");
-    fflush(stdout); // FORCE l'affichage immédiat du texte sur le terminal
-    // Ouvre le fichier qui représente la mémoire physique
+    printf("\nOuverture de la mémoire\n");
+    fflush(stdout);
+    // On ouvre la Memory Map pour accéder à la mémoire physique. 
     if( (fd = open("/dev/mem", (O_RDWR | O_SYNC))) == -1 ) {
-        perror("ERREUR: Impossible d'ouvrir /dev/mem. Êtes-vous en root (sudo) ?");
+        perror("ERREUR: Impossible d'ouvrir /dev/mem");
         return 1;
     }
 
-    // Mappe l'adresse physique du pont dans l'espace virtuel de notre programme
+    printf("Mapping de la mémoire\n");
+    fflush(stdout);
+    // On mappe l'adresse physique du pont dans la mémoire virtuelle de notre processus.
     virtual_base = mmap(NULL, LWHPS2FPGA_SPAN, (PROT_READ | PROT_WRITE), MAP_SHARED, fd, LWHPS2FPGA_BASE);
     
     if(virtual_base == MAP_FAILED) {
@@ -106,36 +111,24 @@ int main() {
 
     reg_fpga = (uint32_t *)(virtual_base + IP_OFFSET);
 
-    printf("Écriture vers le FPGA...\n");
-    fflush(stdout); // FORCE l'affichage immédiat du texte sur le terminal
+    printf("Écriture\n");
+    fflush(stdout);
+
+    uint32_t valeur = *reg_fpga;
+    printf("Valeur lue : 0x%08X\n", valeur);
+
+    /*
     for (int i = 0; i < 32; i++) {
         *(reg_fpga + i) = resultat[i];
     }
-
-    /*
-    uint32_t w1 = convertisseur32bits(mots.mot1);
-    uint32_t w2 = convertisseur32bits(mots.mot2);
-    uint32_t w3 = convertisseur32bits(mots.mot3);
-    uint32_t w4 = convertisseur32bits(mots.mot4);
-    uint32_t w5 = convertisseur32bits(mots.mot5);
-    uint32_t w6 = convertisseur32bits(mots.mot6);
-
-    volatile uint32_t *reg1 = (uint32_t *)(REG_1);
-    volatile uint32_t *reg2 = (uint32_t *)(REG_2);
-    volatile uint32_t *reg3 = (uint32_t *)(REG_3);
-    volatile uint32_t *reg4 = (uint32_t *)(REG_4);
-    volatile uint32_t *reg5 = (uint32_t *)(REG_5);
-    volatile uint32_t *reg6 = (uint32_t *)(REG_6);
-
-    *reg1 = w1;
-    *reg2 = w2;
-    *reg3 = w3;
-    *reg4 = w4;
-    *reg5 = w5;
-    *reg6 = w6;
-
-    printf("mot1 (hex) = 0x%08X\n", w1);
     */
+
+    // On libère la mémoire mappée et on ferme le descripteur de fichier
+    if (munmap(virtual_base, LWHPS2FPGA_SPAN + IP_OFFSET) != 0) {
+        perror("ERREUR: munmap a échoué");
+    }
+    close(fd);
+
 
     return 0;
 }
