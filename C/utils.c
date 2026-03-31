@@ -17,6 +17,16 @@
 // Offset de l'IP dans la mémoire
 #define IP_OFFSET 0x00001000
 
+uint32_t convertisseur32bits(const char *binaire) {
+    uint32_t motbits = 0;
+    while (*binaire) {
+        motbits <<= 1;
+        if (*binaire == '1') motbits |= 1;
+        binaire++;
+    }
+    return motbits;
+}
+
 // Fonction pour séparer une chaîne de caractères binaire en 20 mots de taille souhaitée 
 // (la chaîne de caractère doit avoir un multiple de six comme longueur)
 void separateur(const char *str, uint8_t resultat[32]) {
@@ -64,15 +74,6 @@ void separateur(const char *str, uint8_t resultat[32]) {
     return 0;
 }
 */
-uint32_t convertisseur32bits(const char *binaire) {
-    uint32_t motbits = 0;
-    while (*binaire) {
-        motbits <<= 1;
-        if (*binaire == '1') motbits |= 1;
-        binaire++;
-    }
-    return motbits;
-}
 
 int main() {
     char buffer[256];
@@ -93,7 +94,7 @@ int main() {
     fflush(stdout);
     // On ouvre la Memory Map pour accéder à la mémoire physique. 
     if( (fd = open("/dev/mem", (O_RDWR | O_SYNC))) == -1 ) {
-        perror("ERREUR: Impossible d'ouvrir /dev/mem");
+        perror("ERREUR: flop de devmem");
         return 1;
     }
 
@@ -103,13 +104,13 @@ int main() {
     virtual_base = mmap(NULL, LWHPS2FPGA_SPAN, (PROT_READ | PROT_WRITE), MAP_SHARED, fd, LWHPS2FPGA_BASE);
     
     if(virtual_base == MAP_FAILED) {
-        perror("ERREUR: mmap a échoué");
+        perror("ERREUR: flop de mmap");
         close(fd);
         return 1;
     }
 
 
-    reg_fpga = (uint32_t *)(virtual_base + IP_OFFSET);
+    reg_fpga = (uint32_t *)((uint8_t *)virtual_base + IP_OFFSET);
 
     printf("Écriture\n");
     fflush(stdout);
@@ -124,8 +125,8 @@ int main() {
     */
 
     // On libère la mémoire mappée et on ferme le descripteur de fichier
-    if (munmap(virtual_base, LWHPS2FPGA_SPAN + IP_OFFSET) != 0) {
-        perror("ERREUR: munmap a échoué");
+    if (munmap(virtual_base, LWHPS2FPGA_SPAN) != 0) {
+        perror("ERREUR: flop de munmap");
     }
     close(fd);
 
