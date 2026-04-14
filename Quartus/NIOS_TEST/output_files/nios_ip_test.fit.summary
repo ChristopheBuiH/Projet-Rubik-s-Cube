@@ -1,0 +1,20 @@
+Fitter Status : Successful - Tue Apr 14 07:37:47 2026
+Quartus Prime Version : 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
+Revision Name : nios_ip_test
+Top-level Entity Name : nios_ip_test
+Family : Cyclone V
+Device : 5CSEMA4U23C6
+Timing Models : Final
+Logic utilization (in ALMs) : 2,387 / 15,880 ( 15 % )
+Total registers : 3155
+Total pins : 18 / 314 ( 6 % )
+Total virtual pins : 0
+Total block memory bits : 1,051,648 / 2,764,800 ( 38 % )
+Total RAM Blocks : 132 / 270 ( 49 % )
+Total DSP Blocks : 0 / 84 ( 0 % )
+Total HSSI RX PCSs : 0
+Total HSSI PMA RX Deserializers : 0
+Total HSSI TX PCSs : 0
+Total HSSI PMA TX Serializers : 0
+Total PLLs : 0 / 5 ( 0 % )
+Total DLLs : 0 / 4 ( 0 % )

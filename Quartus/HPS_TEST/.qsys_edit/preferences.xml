@@ -9,7 +9,8 @@
    <description preferredWidth="238" />
   </columns>
  </systemtable>
- <library expandedCategories="Project,Library" />
- <window width="1788" height="839" x="64" y="114" />
+ <library
+   expandedCategories="Library/Basic Functions/Bridges and Adaptors/Memory Mapped,Library/Interface Protocols/Serial,Library/Interface Protocols,Library/Basic Functions/Bridges and Adaptors,Library/Basic Functions/Simulation; Debug and Verification/Debug and Performance,Library/Basic Functions,Library,Project,Library/Basic Functions/Simulation; Debug and Verification" />
+ <window width="1384" height="895" x="64" y="58" />
  <generation synthesis="VHDL" />
 </preferences>
