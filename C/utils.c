@@ -110,6 +110,7 @@ int main() {
     int truc = Recuperateur("~/RUBIKSCUBESOLVER_FINAL.jar", input, buffer, sizeof(buffer));
     separateur(buffer, resultat);
 
+    // En commentaire : le code lié à l'écriture dans la mémoire de l'IP sur le FPGA. Malheureusement, nous n'avons pas pu le mettre à profit.
     /*
     //Mon mémoire
     int fd;
@@ -161,6 +162,7 @@ int main() {
     close(fd);
     */
 
+    // Création d'un fichier texte contenant les instructions binaires. 
     FILE *fichier = fopen("instructions.txt", "w");
 
     printf("\nInstructions :\n");
