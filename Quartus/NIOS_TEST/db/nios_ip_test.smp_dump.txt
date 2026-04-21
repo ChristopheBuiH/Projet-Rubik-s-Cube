@@ -1,0 +1,15 @@
+
+State Machine - |nios_ip_test|nios_test_osmanip:nios0|nios_test_osmanip_intel_niosv_m_0:intel_niosv_m_0|niosv_dm_top:dbg_mod|niosv_debug_module:dm_inst|dm_state
+Name dm_state.EXE_PNDG dm_state.RESUMING dm_state.CMD_EXE dm_state.HALTED dm_state.HALTREQ dm_state.IDLE 
+dm_state.IDLE 0 0 0 0 0 0 
+dm_state.HALTREQ 0 0 0 0 1 1 
+dm_state.HALTED 0 0 0 1 0 1 
+dm_state.CMD_EXE 0 0 1 0 0 1 
+dm_state.RESUMING 0 1 0 0 0 1 
+dm_state.EXE_PNDG 1 0 0 0 0 1 
+
+State Machine - |nios_ip_test|nios_test_osmanip:nios0|controller_ip:osmanip_0|present
+Name present.SOLVED present.START present.LOAD 
+present.LOAD 0 0 0 
+present.START 0 1 1 
+present.SOLVED 1 0 1 

@@ -1,5 +1,5 @@
 Analysis & Synthesis report for hps_dp_ram
-Tue Mar 24 14:24:12 2026
+Tue Apr 14 07:41:19 2026
 Quartus Prime Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
 
 
@@ -49,7 +49,7 @@ on the Quartus Prime software download page.
 +-----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                      ;
 +---------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Tue Mar 24 14:24:12 2026           ;
+; Analysis & Synthesis Status     ; Successful - Tue Apr 14 07:41:19 2026           ;
 ; Quartus Prime Version           ; 24.1std.0 Build 1077 03/04/2025 SC Lite Edition ;
 ; Revision Name                   ; hps_dp_ram                                      ;
 ; Top-level Entity Name           ; controller_ip                                   ;
@@ -638,7 +638,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
-    Info: Processing started: Tue Mar 24 14:24:04 2026
+    Info: Processing started: Tue Apr 14 07:41:11 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off hps_dp_ram -c hps_dp_ram
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
@@ -699,8 +699,8 @@ Info (21057): Implemented 33 device resources after synthesis - the final resour
     Info (21059): Implemented 16 output pins
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 38 warnings
     Info: Peak virtual memory: 4900 megabytes
-    Info: Processing ended: Tue Mar 24 14:24:12 2026
+    Info: Processing ended: Tue Apr 14 07:41:19 2026
     Info: Elapsed time: 00:00:08
-    Info: Total CPU time (on all processors): 00:00:17
+    Info: Total CPU time (on all processors): 00:00:18
 
 
