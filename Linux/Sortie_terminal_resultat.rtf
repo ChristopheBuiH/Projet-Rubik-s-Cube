@@ -1,0 +1,137 @@
+{\rtf1\ansi\ansicpg1252\deff0\deflang1036{\fonttbl{\f0\fmodern Consolas;}{\f1\fmodern\fcharset0 Consolas;}{\f2\fnil\fcharset129 Courier New;}}
+{\colortbl ;\red20\green20\blue20;\red142\green142\blue142;\red170\green64\blue64;\red85\green85\blue85;\red170\green51\blue170;}
+\viewkind4\uc1\pard\cf1\highlight2\f0\fs20 
+\par \cf0\highlight0 root@de1soclinux:~# ls\cf1\highlight2 
+\par \cf0\highlight0 DE1_SoC_Computer.rbf        gsensor         opencl_arm32_rte\cf1\highlight2 
+\par \cf0\highlight0 OpenCL_Examples             helloworld      pushbutton_irq_handler\cf1\highlight2 
+\par \cf0\highlight0 RUBIKSCUBESOLVER_FINAL.jar  init_opencl.sh  solveur\cf1\highlight2 
+\par \cf0\highlight0 a.out                       java_install    unlock_bridges.c\cf1\highlight2 
+\par \cf0\highlight0 animation_bouncy            leds            utils.c\cf1\highlight2 
+\par \cf0\highlight0 d                           mem_rw          utils.h\cf1\highlight2 
+\par \cf0\highlight0 drawbox                     opencl.rbf\cf1\highlight2 
+\par \cf0\highlight0 root@de1soclinux:~# rm solveur\cf1\highlight2 
+\par \cf0\highlight0 root@de1soclinux:~# rm utils.c\cf1\highlight2 
+\par \cf0\highlight0 root@de1soclinux:~# wget http://192.168.137.1:8000/utils.c\cf1\highlight2 
+\par \cf0\highlight0 --1970-01-01 00:30:44--  http://192.168.137.1:8000/utils.c\cf1\highlight2 
+\par \cf0\highlight0 Connecting to 192.168.137.1:8000... connected.\cf1\highlight2 
+\par \cf0\highlight0 HTTP request sent, awaiting response... 200 OK\cf1\highlight2 
+\par \cf0\highlight0 Length: 5217 (5.1K) [text/plain]\cf1\highlight2 
+\par \cf0\highlight0 Saving to: `utils.c'\cf1\highlight2 
+\par 
+\par \cf0\highlight0 100%[======================================>] 5,217       --.-K/s   in 0s\cf1\highlight2 
+\par 
+\par \cf0\highlight0 1970-01-01 00:30:44 (126 MB/s) - `utils.c' saved [5217/5217]\cf1\highlight2 
+\par 
+\par \cf0\highlight0 root@de1soclinux:~# gcc utils.c -std=gnu99 -o solveur\cf1\highlight2 
+\par \cf0\highlight0 root@de1soclinux:~# ./solveur\cf1\highlight2 
+\par \cf0\highlight0 Entrez le cube ou le scramble : U R2 F B R B2 R U2 L B2 R U' D' R2 F R' L B2 U2 F2\cf1\highlight2 
+\par 
+\par \cf0\highlight0 Instructions :\cf1\highlight2 
+\par \cf0\highlight0 010100\cf1\highlight2 
+\par \cf0\highlight0 010001\cf1\highlight2 
+\par \cf0\highlight0 100001\cf1\highlight2 
+\par \cf0\highlight0 110100\cf1\highlight2 
+\par \cf0\highlight0 110010\cf1\highlight2 
+\par \cf0\highlight0 011100\cf1\highlight2 
+\par \cf0\highlight0 100011\cf1\highlight2 
+\par \cf0\highlight0 010100\cf1\highlight2 
+\par \cf0\highlight0 100001\cf1\highlight2 
+\par \cf0\highlight0 101000\cf1\highlight2 
+\par \cf0\highlight0 110100\cf1\highlight2 
+\par \cf0\highlight0 101100\cf1\highlight2 
+\par \cf0\highlight0 011100\cf1\highlight2 
+\par \cf0\highlight0 110011\cf1\highlight2 
+\par \cf0\highlight0 101100\cf1\highlight2 
+\par \cf0\highlight0 110100\cf1\highlight2 
+\par \cf0\highlight0 101100\cf1\highlight2 
+\par \cf0\highlight0 111000\cf1\highlight2 
+\par \cf0\highlight0 100011\cf1\highlight2 
+\par \cf0\highlight0 101100\cf1\highlight2 
+\par \cf0\highlight0 110100\cf1\highlight2 
+\par \cf0\highlight0 101100\cf1\highlight2 
+\par 
+\par \cf0\highlight0\f1 S\'e9quence pour le robot : R L F U D' R2 F2 R F B' U B2 R2 D2 B2 U B2 U' F2 B2 U B2\cf1\highlight2\f0 
+\par 
+\par \cf0\highlight0 root@de1soclinux:~# ls\cf1\highlight2 
+\par \cf0\highlight0 DE1_SoC_Computer.rbf        gsensor           opencl.rbf\cf1\highlight2 
+\par \cf0\highlight0 OpenCL_Examples             helloworld        opencl_arm32_rte\cf1\highlight2 
+\par \cf0\highlight0 RUBIKSCUBESOLVER_FINAL.jar  init_opencl.sh    pushbutton_irq_handler\cf1\highlight2 
+\par \cf0\highlight0 a.out                       instructions.txt  solveur\cf1\highlight2 
+\par \cf0\highlight0 animation_bouncy            java_install      unlock_bridges.c\cf1\highlight2 
+\par \cf0\highlight0 d                           leds              utils.c\cf1\highlight2 
+\par \cf0\highlight0 drawbox                     mem_rw            utils.h\cf1\highlight2 
+\par \cf0\highlight0 root@de1soclinux:~# instructions.txt\cf1\highlight2 
+\par \cf0\highlight0 instructions.txt: command not found\cf1\highlight2 
+\par \cf0\highlight0 root@de1soclinux:~# ./instructions.txt\cf1\highlight2 
+\par \cf0\highlight0 -bash: ./instructions.txt: Permission denied\cf1\highlight2 
+\par \cf0\highlight0 root@de1soclinux:~# sudo ./instructions.txt\cf1\highlight2 
+\par \cf0\highlight0 sudo: ./instructions.txt: command not found\cf1\highlight2 
+\par \cf0\highlight0 root@de1soclinux:~# cat instructions.txt\cf1\highlight2 
+\par \cf0\highlight0 010100\cf1\highlight2 
+\par \cf0\highlight0 010001\cf1\highlight2 
+\par \cf0\highlight0 100001\cf1\highlight2 
+\par \cf0\highlight0 110100\cf1\highlight2 
+\par \cf0\highlight0 110010\cf1\highlight2 
+\par \cf0\highlight0 011100\cf1\highlight2 
+\par \cf0\highlight0 100011\cf1\highlight2 
+\par \cf0\highlight0 010100\cf1\highlight2 
+\par \cf0\highlight0 100001\cf1\highlight2 
+\par \cf0\highlight0 101000\cf1\highlight2 
+\par \cf0\highlight0 110100\cf1\highlight2 
+\par \cf0\highlight0 101100\cf1\highlight2 
+\par \cf0\highlight0 011100\cf1\highlight2 
+\par \cf0\highlight0 110011\cf1\highlight2 
+\par \cf0\highlight0 101100\cf1\highlight2 
+\par \cf0\highlight0 110100\cf1\highlight2 
+\par \cf0\highlight0 101100\cf1\highlight2 
+\par \cf0\highlight0 111000\cf1\highlight2 
+\par \cf0\highlight0 100011\cf1\highlight2 
+\par \cf0\highlight0 101100\cf1\highlight2 
+\par \cf0\highlight0 110100\cf1\highlight2 
+\par \cf0\highlight0 101100\cf1\highlight2 
+\par \cf0\highlight0 root@de1soclinux:~# rm instructions.txt\cf1\highlight2 
+\par \cf0\highlight0 root@de1soclinux:~# ls\cf1\highlight2 
+\par \cf0\highlight0 DE1_SoC_Computer.rbf        gsensor         opencl_arm32_rte\cf1\highlight2 
+\par \cf0\highlight0 OpenCL_Examples             helloworld      pushbutton_irq_handler\cf1\highlight2 
+\par \cf0\highlight0 RUBIKSCUBESOLVER_FINAL.jar  init_opencl.sh  solveur\cf1\highlight2 
+\par \cf0\highlight0 a.out                       java_install    unlock_bridges.c\cf1\highlight2 
+\par \cf0\highlight0 animation_bouncy            leds            utils.c\cf1\highlight2 
+\par \cf0\highlight0 d                           mem_rw          utils.h\cf1\highlight2 
+\par \cf0\highlight0 drawbox                     opencl.rbf\cf1\highlight2 
+\par \cf0\highlight0 root@de1soclinux:~# ping google.com\cf1\highlight2 
+\par \cf0\highlight0 ^C\cf1\highlight2 
+\par \cf0\highlight0 root@de1soclinux:~# ping 8.8.8.8\cf1\highlight2 
+\par \cf0\highlight0 PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.\cf1\highlight2 
+\par \cf0\highlight0 ^C\cf1\highlight2 
+\par \cf0\highlight0 --- 8.8.8.8 ping statistics ---\cf1\highlight2 
+\par \cf0\highlight0 3 packets transmitted, 0 received, 100% packet loss, time 2006ms\cf1\highlight2 
+\par 
+\par \cf0\highlight0 root@de1soclinux:~# ping google\cf1\highlight2 
+\par \cf0\highlight0 ^C\cf1\highlight2 
+\par \cf0\highlight0 root@de1soclinux:~# ping google.com\cf1\highlight2 
+\par \cf0\highlight0 ^C\cf1\highlight2 
+\par \cf0\highlight0 root@de1soclinux:~# ping 192.154.24.1\cf1\highlight2 
+\par \cf0\highlight0 PING 192.154.24.1 (192.154.24.1) 56(84) bytes of data.\cf1\highlight2 
+\par \cf0\highlight0 ^C\cf1\highlight2 
+\par \cf0\highlight0 --- 192.154.24.1 ping statistics ---\cf1\highlight2 
+\par \cf0\highlight0 2 packets transmitted, 0 received, 100% packet loss, time 1006ms\cf1\highlight2 
+\par 
+\par \cf0\highlight0 root@de1soclinux:~# ./solveur\cf1\highlight2 
+\par \cf3\highlight0 Error reading from serial device\cf1\highlight2 
+\par 
+\par \cf4\highlight0\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\cf1\highlight2 
+\par 
+\par \cf3\highlight0 Session stopped\cf1\highlight2 
+\par \cf0\highlight0     - Press \cf5 <Return>\cf0  to exit tab\cf1\highlight2 
+\par \cf0\highlight0     - Press \cf5 R\cf0  to restart session\cf1\highlight2 
+\par \cf0\highlight0     - Press \cf5 S\cf0  to save terminal output to file\cf1\highlight2 
+\par 
+\par \cf4\highlight0\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\cf1\highlight2 
+\par 
+\par \cf3\highlight0 Session stopped\cf1\highlight2 
+\par \cf0\highlight0     - Press \cf5 <Return>\cf0  to exit tab\cf1\highlight2 
+\par \cf0\highlight0     - Press \cf5 R\cf0  to restart session\cf1\highlight2 
+\par \cf0\highlight0     - Press \cf5 S\cf0  to save terminal output to file\cf1\highlight2 
+\par \pard\cf0\highlight0\f2 
+\par }
+ 

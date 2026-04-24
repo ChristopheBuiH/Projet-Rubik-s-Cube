@@ -4,15 +4,28 @@
 #include <stdint.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include <time.h>
 #include <sys/mman.h>
+#include <stdbool.h>
+
 #include "utils.h"
 
 // Adresse de base du pont Lightweight HPS-to-FPGA 
 #define LWHPS2FPGA_BASE 0xFF200000 
-// Taille de la plage mémoire à mapper (souvent 2 Mo pour le LWHPS2FPGA)
+// Taille de la plage mémoire à mapper
 #define LWHPS2FPGA_SPAN 0x00200000
 // Offset de l'IP dans la mémoire
-#define IP_OFFSET 0x00001000
+#define IP_OFFSET 0x00020000
+
+uint32_t convertisseur32bits(const char *binaire) {
+    uint32_t motbits = 0;
+    while (*binaire) {
+        motbits <<= 1;
+        if (*binaire == '1') motbits |= 1;
+        binaire++;
+    }
+    return motbits;
+}
 
 // Fonction pour séparer une chaîne de caractères binaire en 20 mots de taille souhaitée 
 // (la chaîne de caractère doit avoir un multiple de six comme longueur)
@@ -27,7 +40,7 @@ void separateur(const char *str, uint8_t resultat[32]) {
             listemots[i][j] = str[(i * width) + j];
         }
         listemots[i][width] = '\0';
-        resultat[i] = convertisseur32bits(listemots[i]);
+        resultat[i] = (uint8_t)convertisseur32bits(listemots[i]);
     }
 
     for (int i = nb_mots; i < 32; i++) {
@@ -35,107 +48,148 @@ void separateur(const char *str, uint8_t resultat[32]) {
     }
 }
 
-/*int Recuperateur(const char *chemin, char *buffer, size_t bufferSize) {
+int Recuperateur(const char *jarPath, const char *inputCube, char *buffer, size_t bufferSize) {
     FILE *fp;
-    char commande[512];
+    char commande[1024];
 
-    snprintf(commande, sizeof(commande), "java -jar \"%s\"", chemin);
+    // On construit la commande : java -jar RubikSolver.jar [input]
+    snprintf(commande, sizeof(commande), "java -jar %s \"%s\"", jarPath, inputCube);
 
-    fp = _popen(commande, "r");
-
-    // Gestion erreurs
+    fp = popen(commande, "r"); 
     if (fp == NULL) {
-        _wperror(L"Erreur");
+        perror("Erreur lors de l'exécution du JAR");
         return 1;
     }
 
-    while (fgets(buffer, bufferSize, fp) != NULL) {
-        printf("Sortie Java : %s", buffer);
+    if (fgets(buffer, bufferSize, fp) != NULL) {
+        buffer[strcspn(buffer, "\r\n")] = '\0';
     }
 
-    // Nettoyer la dernière ligne lue
-    size_t blen = strcspn(buffer, "\r\n");
-    buffer[blen] = '\0';
-
-    _pclose(fp);
+    pclose(fp); 
     return 0;
 }
-*/
-uint32_t convertisseur32bits(const char *binaire) {
-    uint32_t motbits = 0;
-    while (*binaire) {
-        motbits <<= 1;
-        if (*binaire == '1') motbits |= 1;
-        binaire++;
+const char* traduire_mouvement(uint8_t val) {
+    switch(val) {
+        case 0b110100: return "U";
+        case 0b111100: return "U2";
+        case 0b111000: return "U'";
+        
+        case 0b010100: return "R";
+        case 0b011100: return "R2";
+        case 0b011000: return "R'";
+        
+        case 0b100001: return "F";
+        case 0b100011: return "F2";
+        case 0b100010: return "F'";
+        
+        case 0b110001: return "D";
+        case 0b110011: return "D2";
+        case 0b110010: return "D'";
+        
+        case 0b010001: return "L";
+        case 0b010011: return "L2";
+        case 0b010010: return "L'";
+        
+        case 0b100100: return "B";
+        case 0b101100: return "B2";
+        case 0b101000: return "B'";
+        
+        default: return "";
     }
-    return motbits;
 }
 
 int main() {
-    char buffer[256];
+    char input[256];
+    char buffer[1024];
     uint8_t resultat[32] = {0x0};
 
-    // int chaine = Recuperateur("C:\\Travail\\ENSEA\\2A\\Projet\\SaintGraal\\RUBIKSCUBESOLVER_Final\\RubikSolver.jar", buffer, sizeof(buffer));
-    separateur("010001010100011011010001", resultat);
+    printf("Entrez le cube ou le scramble : ");
+    fgets(input, sizeof(input), stdin);
+    input[strcspn(input, "\r\n")] = '\0';
 
+    int truc = Recuperateur("~/RUBIKSCUBESOLVER_FINAL.jar", input, buffer, sizeof(buffer));
+    separateur(buffer, resultat);
 
-    // --- 2. ACCÈS MÉMOIRE FPGA ---
+    // En commentaire : le code lié à l'écriture dans la mémoire de l'IP sur le FPGA. Malheureusement, nous n'avons pas pu le mettre à profit.
+    /*
+    //Mon mémoire
     int fd;
     void *virtual_base;
     volatile uint32_t *reg_fpga;
 
     
 
-    printf("\nOuverture de la mémoire physique...\n");
-    fflush(stdout); // FORCE l'affichage immédiat du texte sur le terminal
-    // Ouvre le fichier qui représente la mémoire physique
+    printf("\nOuverture de la mémoire\n");
+    fflush(stdout);
+    // On ouvre la Memory Map pour accéder à la mémoire physique. 
     if( (fd = open("/dev/mem", (O_RDWR | O_SYNC))) == -1 ) {
-        perror("ERREUR: Impossible d'ouvrir /dev/mem. Êtes-vous en root (sudo) ?");
+        perror("ERREUR: flop de devmem");
         return 1;
     }
 
-    // Mappe l'adresse physique du pont dans l'espace virtuel de notre programme
+    printf("Mapping de la mémoire\n");
+    fflush(stdout);
+    // On mappe l'adresse physique du pont dans la mémoire virtuelle de notre processus.
     virtual_base = mmap(NULL, LWHPS2FPGA_SPAN, (PROT_READ | PROT_WRITE), MAP_SHARED, fd, LWHPS2FPGA_BASE);
     
     if(virtual_base == MAP_FAILED) {
-        perror("ERREUR: mmap a échoué");
+        perror("ERREUR: flop de mmap");
         close(fd);
         return 1;
     }
 
 
-    reg_fpga = (uint32_t *)(virtual_base + IP_OFFSET);
+    reg_fpga = (uint32_t *)((uint8_t *)virtual_base + IP_OFFSET);
 
-    printf("Écriture vers le FPGA...\n");
-    fflush(stdout); // FORCE l'affichage immédiat du texte sur le terminal
+    printf("Écriture\n");
+    fflush(stdout);
+
+    
+    uint32_t valeur = *reg_fpga;
+    printf("Valeur lue : 0x%08X\n", valeur);
+    
+
+    
     for (int i = 0; i < 32; i++) {
         *(reg_fpga + i) = resultat[i];
     }
+    
 
-    /*
-    uint32_t w1 = convertisseur32bits(mots.mot1);
-    uint32_t w2 = convertisseur32bits(mots.mot2);
-    uint32_t w3 = convertisseur32bits(mots.mot3);
-    uint32_t w4 = convertisseur32bits(mots.mot4);
-    uint32_t w5 = convertisseur32bits(mots.mot5);
-    uint32_t w6 = convertisseur32bits(mots.mot6);
-
-    volatile uint32_t *reg1 = (uint32_t *)(REG_1);
-    volatile uint32_t *reg2 = (uint32_t *)(REG_2);
-    volatile uint32_t *reg3 = (uint32_t *)(REG_3);
-    volatile uint32_t *reg4 = (uint32_t *)(REG_4);
-    volatile uint32_t *reg5 = (uint32_t *)(REG_5);
-    volatile uint32_t *reg6 = (uint32_t *)(REG_6);
-
-    *reg1 = w1;
-    *reg2 = w2;
-    *reg3 = w3;
-    *reg4 = w4;
-    *reg5 = w5;
-    *reg6 = w6;
-
-    printf("mot1 (hex) = 0x%08X\n", w1);
+    // On libère la mémoire mappée et on ferme le descripteur de fichier
+    if (munmap(virtual_base, LWHPS2FPGA_SPAN) != 0) {
+        perror("ERREUR: flop de munmap");
+    }
+    close(fd);
     */
+
+    // Création d'un fichier texte contenant les instructions binaires. 
+    FILE *fichier = fopen("instructions.txt", "w");
+
+    printf("\nInstructions :\n");
+
+    for (int i = 0; i < 32; i++) {
+        if (resultat[i] != 0) {
+            
+            for (int j = 5; j >= 0; j--) {
+                fprintf(fichier, "%c", (resultat[i] & (1 << j)) ? '1' : '0');
+            }
+            fprintf(fichier, "\n"); // Un mouvement par ligne
+
+            
+            for (int j = 5; j >= 0; j--) {
+                printf("%c", (resultat[i] & (1 << j)) ? '1' : '0');
+            }
+            printf("\n");
+        }
+    }
+
+    printf("\nSéquence pour le robot : ");
+    for (int i = 0; i < 32; i++) {
+        if (resultat[i] != 0) {
+            printf("%s ", traduire_mouvement(resultat[i]));
+        }
+    }
+    printf("\n\n");
 
     return 0;
 }
